@@ -74,6 +74,8 @@ src/main/resources
 ---
 
 ## データベース設計
+### データベース名
+ - case_db
 
 ### Userテーブル
 - id
