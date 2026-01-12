@@ -1,4 +1,4 @@
-package com.example.muser;
+package com.example.casemanager;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
