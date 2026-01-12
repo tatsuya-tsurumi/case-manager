@@ -66,7 +66,51 @@ src/main/java/com/example/casemanager
 src/main/resources
 ├── templates
 │   ├── user
-│   ├── project
+│   ├── case
 │   └── task
 ├── static
 └── application.yml
+```
+---
+
+## データベース設計
+
+### Userテーブル
+- id
+- user_name
+- password
+
+### Caseテーブル
+- id
+- user_id
+- case_name
+- client_name
+- status
+- detail
+
+### Taskテーブル
+- id
+- case_id
+- title
+- deadline
+- priority
+- status
+
+---
+
+## ER図
+
+![ER図](docs/case-manager.drawio.png)
+
+## 開発のポイント
+
+- Controller / Service / Repository を明確に分離
+- ビジネスロジックは Service 層に集約
+- MyBatis を使用し SQL を明示的に管理
+- 実務を想定したステータス管理設計
+
+## 今後の拡張予定
+
+- Spring Security による認証・認可
+- ロール管理（管理者 / 一般ユーザー）
+- ステータス変更履歴の管理
