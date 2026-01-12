@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>ケース一覧</title>
+<link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+	<h2>ケース検索</h2>
+	
+	<!-- 検索 -->
+	<form th:action="@{/case-search-list}" method="post">
+		<input type="submit" value="検索" class="btn">
+	</form>
+	
+	<!-- 表示 -->
+	<div th:if="${caseSummaryList} != null">
+		<h2>ケース一覧</h2>
+		
+		<table class="case-list">
+			<tr>
+				<th>ケースID</th><th>ユーザID</th><th>ケース名</th><th>クライアント名</th>
+				<th>ステータス</th><th>詳細</th>
+			</tr>
+			<tr th:each="case : ${caseSummaryList}">
+				<td th:text="${case.caseId}"></td>
+				<td th:text="${case.userId}"></td>
+				<td th:text="${case.caseName}"></td>
+				<td th:text="${case.clientName}"></td>
+				<td th:text="${case.status}"></td>
+				<td th:text="${case.detail}"></td>
+			</tr>
+		</table>
+		
+	</div>
+	
+</body>
+</html>

@@ -78,12 +78,12 @@ src/main/resources
  - case_db
 
 ### Userテーブル
-- id
+- user_id
 - user_name
 - password
 
 ### Caseテーブル
-- id
+- case_id
 - user_id
 - case_name
 - client_name
@@ -91,7 +91,7 @@ src/main/resources
 - detail
 
 ### Taskテーブル
-- id
+- task_id
 - case_id
 - title
 - deadline
