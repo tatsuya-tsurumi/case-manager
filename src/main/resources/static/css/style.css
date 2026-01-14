@@ -13,8 +13,7 @@ h1 {
 
 h2 {
 	font-size: 28px;
-	background-color: #008080;
-	color: white;
+	background-color: #A4C6FF;
 	padding-top: 6px;
 	padding-bottom: 6px;
 }
@@ -30,8 +29,8 @@ h2 {
 
 .btn:hover {
   color: #fff;
-  background: #008080;
-  border: 2px solid #008080;
+  background: #A4C6FF;
+  border: 2px solid #A4C6FF;
 }
 
 table {
@@ -45,7 +44,7 @@ table {
 th {
 	border: 1px solid #5e696c;
     text-align:center;
-    background-color: #3cb371;
+    background-color: #A4C6FF;
     height: 32px;
 }
 

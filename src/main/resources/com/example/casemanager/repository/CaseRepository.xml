@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.casemanager.repository.CaseRepository">
+	<!-- 一覧全件検索 -->
+	<select id="selectListAll" 
+			resultType="com.example.casemanager.entity.CaseSummary">
+		SELECT case_id, user_id, case_name, client_name, status_code, detail
+		FROM cases
+		ORDER BY case_id
+	</select>
+</mapper>

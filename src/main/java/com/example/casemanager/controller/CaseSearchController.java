@@ -1,6 +1,5 @@
 package com.example.casemanager.controller;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.stereotype.Controller;
@@ -9,11 +8,17 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.example.casemanager.entity.CaseSummary;
+import com.example.casemanager.service.CaseService;
+
+import lombok.RequiredArgsConstructor;
 
 
 
 @Controller
+@RequiredArgsConstructor
 public class CaseSearchController {
+	
+	private final CaseService caseService;
 	
 	/*-- 最初のリクエスト */
 	@GetMapping("/top")
@@ -25,16 +30,8 @@ public class CaseSearchController {
 	@PostMapping("/case-search-list")
 	public String searchList(Model model) {
 		
-		// とりあえず作成
-		List<CaseSummary> list = new ArrayList<CaseSummary>();
-		CaseSummary c = new CaseSummary();
-		c.setCaseId(1);
-		c.setUserId("2");
-		c.setCaseName("テスト");
-		c.setClientName("ABC商事");
-		c.setStatus("進行中");
-		c.setDetail("詳細表示");
-		list.add(c);
+		// 一覧の全件検索
+		List<CaseSummary> list = caseService.findListAll();
 		
 		// 結果を格納してHTMLテンプレート名でreturn
 		model.addAttribute("caseSummaryList", list);

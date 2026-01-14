@@ -1,0 +1,10 @@
+package com.example.casemanager.service;
+
+import java.util.List;
+
+import com.example.casemanager.entity.CaseSummary;
+
+public interface CaseService {
+	// 一覧全件検索
+	List<CaseSummary> findListAll();
+}
