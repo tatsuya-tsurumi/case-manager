@@ -19,16 +19,17 @@
 		
 		<table class="case-list">
 			<tr>
-				<th>ケースID</th><th>ユーザID</th><th>ケース名</th><th>クライアント名</th>
-				<th>ステータス</th><th>詳細</th>
+				<th>ケースID</th><th>担当者</th><th>ケース名</th><th>クライアント名</th>
+				<th>ステータス</th><th>詳細</th><th>タスク件数</th>
 			</tr>
 			<tr th:each="case : ${caseSummaryList}">
 				<td th:text="${case.caseId}"></td>
-				<td th:text="${case.userId}"></td>
+				<td th:text="${case.user.userName}"></td>
 				<td th:text="${case.caseName}"></td>
 				<td th:text="${case.clientName}"></td>
-				<td th:text="${case.status}"></td>
+				<td th:text="${case.status.statusCode + ':' + case.status.statusName}"></td>
 				<td th:text="${case.detail}"></td>
+				<td th:text="${case.taskCnt}"></td>
 			</tr>
 		</table>
 		

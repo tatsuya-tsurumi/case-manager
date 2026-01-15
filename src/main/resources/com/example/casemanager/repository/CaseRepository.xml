@@ -1,11 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.casemanager.repository.CaseRepository">
+	<!-- resultMap(1対1の関係含む) -->
+	<resultMap id="caseList" 
+			   type="com.example.casemanager.entity.CaseSummary">
+		<id property="caseId" column="case_id" />
+		<result property="caseName" column="case_name" />
+		<result property="clientName" column="client_name" />
+		<result property="detail" column="detail" />
+		<result property="taskCnt" column="task_cnt" />
+		<association property="status" 
+					 javaType="com.example.casemanager.entity.Status">
+			<id property="statusCode" column="status_code" />
+			<result property="statusName" column="status_name" />
+		</association>
+		<association property="user" 
+					 javaType="com.example.casemanager.entity.User">
+			<id property="userId" column="user_id" />
+			<result property="userName" column="user_name" />
+		</association>
+	</resultMap>
 	<!-- 一覧全件検索 -->
 	<select id="selectListAll" 
-			resultType="com.example.casemanager.entity.CaseSummary">
-		SELECT case_id, user_id, case_name, client_name, status_code, detail
-		FROM cases
-		ORDER BY case_id
+			resultMap="caseList">
+		SELECT ca.case_id, case_name, client_name, 
+				st.status_code, st.status_name, detail,
+				ca.user_id, user_name, COUNT(ta.task_id) task_cnt
+		FROM cases ca
+			 INNER JOIN status st
+			 		ON ca.status_code = st.status_code
+			 INNER JOIN users us
+			 		ON ca.user_id = us.user_id
+			 LEFT OUTER JOIN tasks ta
+			 		ON ca.case_id = ta.case_id
+		GROUP BY ca.case_id, user_id, case_name, client_name, 
+				 st.status_code, st.status_name, detail, ca.user_id, user_name
+		ORDER BY ca.case_id
 	</select>
 </mapper>

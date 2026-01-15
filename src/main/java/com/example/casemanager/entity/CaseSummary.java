@@ -5,9 +5,10 @@ import lombok.Data;
 @Data
 public class CaseSummary {
 	private Integer caseId;
-	private String userId;
+	private User user;
 	private String caseName;
 	private String clientName;
-	private String status;
 	private String detail;
+	private Status status;
+	private Integer taskCnt;
 }
