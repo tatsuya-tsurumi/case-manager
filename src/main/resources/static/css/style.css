@@ -57,3 +57,40 @@ td {
 .case-list {
     background-color: #eee8aa;
 }
+
+/* 詳細テーブル */
+.detail-table {
+	background-color: #eee8aa;
+	width: 50%;
+	table-layout: fixed;
+}
+
+.detail-table .guide {
+	width: 30%;
+	background-color: #CCCCCC	;
+	text-align: center;
+}
+
+.detail-table td {
+	text-align: left;
+}
+
+.detail-table td input {
+  width: 50%;
+  margin-left: 4px;
+}
+
+.detail-table td textarea {
+  width: 80%;
+  margin-left: 4px;
+}
+
+/* 長い入力の幅  */
+input.long {
+	width: 300px;
+}
+
+.error-msg {
+	color: red;
+}
+

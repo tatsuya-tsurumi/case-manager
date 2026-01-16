@@ -6,8 +6,12 @@
 <link rel="stylesheet" th:href="@{/css/style.css}">
 </head>
 <body>
-	<h2>ケース検索</h2>
-	
+	<br>
+	<!-- 登録へ -->
+	<form th:action="@{/case-show-regist}" method="post">
+		<input type="submit" value="ケース登録" class="btn">
+	</form>
+	<h2>ケース検索</h2>	
 	<!-- 検索 -->
 	<form th:action="@{/case-search-list}" method="post">
 		<input type="submit" value="検索" class="btn">

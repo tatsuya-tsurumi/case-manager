@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<title>ケース登録確認</title>
+	<link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+	<h2>ケース登録確認</h2>
+
+	<table class="detail-table"　th:object="${caseRegistForm}">
+		<tr>
+			<td class="guide">【ユーザID】</td>
+			<td th:text="*{userId}"></td>
+		<tr>
+			<td class="guide">【ケース名】</td>
+			<td th:text="*{caseName}"></td>
+		<tr>
+			<td class="guide">【クライアント名】</td>
+			<td th:text="*{clientName}"></td>
+		<tr>
+			<td class="guide">【詳細】</td>
+			<td th:text="*{detail}" class="long"></td>
+		<tr>
+			<td class="guide">【ステータスID】</td>
+			<td th:text="*{statusCode}"></td>
+		</tr>
+	</table>
+	<br>
+	
+	<form th:action="@{/case-confirm-regist}" method="post"
+			th:object="${caseRegistForm}">
+		<input type="hidden" th:field="*{userId}">
+		<input type="hidden" th:field="*{caseName}">
+		<input type="hidden" th:field="*{clientName}">
+		<input type="hidden" th:field="*{detail}">
+		<input type="hidden" th:field="*{statusCode}">
+		<input type="submit" value="登録実行" class="btn">
+	</form>
+	<br>
+	<form th:action="@{/case-show-regist}" method="post"
+			th:object="${caseRegistForm}">
+		<input type="hidden" th:field="*{userId}">
+		<input type="hidden" th:field="*{caseName}">
+		<input type="hidden" th:field="*{clientName}">
+		<input type="hidden" th:field="*{detail}">
+		<input type="hidden" th:field="*{statusCode}">
+		<input type="submit" value="戻る" class="btn">
+	</form>
+</body>
+
+</html>

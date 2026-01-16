@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>ケース登録</title>
+<link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+	<h2>ケース登録</h2>
+	
+	<form th:action="@{/case-regist}" method="post" th:object="${caseRegistForm}">
+		<table class="detail-table">
+			<tr>
+				<td class="guide">【ユーザID】</td>
+				<td>
+					<input type="text" th:field="*{userId}"><br>
+					<div th:if="${#fields.hasErrors('userId')}" th:errors="*{userId}"
+					class="error-msg"></div>
+				</td>
+			<tr>
+				<td class="guide">【ケース名】</td>
+				<td>
+					<input type="text" th:field="*{caseName}"><br>
+					<div th:if="${#fields.hasErrors('caseName')}" th:errors="*{caseName}"
+					class="error-msg"></div>
+				</td>
+			<tr>
+				<td class="guide">【クライアント名】</td>
+				<td>
+					<input type="text" th:field="*{clientName}"><br>
+					<div th:if="${#fields.hasErrors('clientName')}" th:errors="*{clientName}"
+					class="error-msg"></div>
+				</td>
+			<tr>
+				<td class="guide">【詳細】</td>
+				<td>
+					<textarea th:field="*{detail}" class="long" rows="3"></textarea><br>
+					<div th:if="${#fields.hasErrors('detail')}" th:errors="*{detail}"
+					class="error-msg"></div>
+				</td>
+			<tr>
+				<td class="guide">【ステータスID】</td>
+				<td>
+					<input type="text" th:field="*{statusCode}"><br>
+					<div th:if="${#fields.hasErrors('statusCode')}" th:errors="*{statusCode}"
+					class="error-msg"></div>
+				</td>
+			</tr>
+		</table>
+		<br>
+		<input type="submit" value="登録" class="btn">
+		<br>
+		<br>
+		<a th:href="@{/top}">トップページに戻る</a>
+	</form>
+</body>
+</html>
