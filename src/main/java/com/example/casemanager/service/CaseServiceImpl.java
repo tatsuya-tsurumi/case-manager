@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.example.casemanager.entity.Case;
 import com.example.casemanager.entity.CaseSummary;
 import com.example.casemanager.repository.CaseRepository;
 
@@ -22,6 +23,12 @@ public class CaseServiceImpl implements CaseService {
 		List<CaseSummary> list = caseRepository.selectListAll();
 		
 		return list;
+	}
+
+	@Override
+	@Transactional
+	public void regist(Case cases) {
+		caseRepository.insert(cases);
 	}
 
 }

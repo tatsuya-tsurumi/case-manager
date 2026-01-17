@@ -10,9 +10,11 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.example.casemanager.entity.Case;
 import com.example.casemanager.entity.Status;
 import com.example.casemanager.entity.User;
 import com.example.casemanager.form.CaseRegistForm;
+import com.example.casemanager.service.CaseService;
 import com.example.casemanager.service.StatusService;
 import com.example.casemanager.service.UserService;
 
@@ -24,6 +26,7 @@ public class CaseRegistController {
 	
 	private final StatusService statusService;
 	private final UserService userSerivce;
+	private final CaseService caseService;
 	
 	/*-- ケース登録画面表示リクエスト --*/
 	@PostMapping("/case-show-regist")
@@ -77,15 +80,31 @@ public class CaseRegistController {
 	@PostMapping("/case-confirm-regist")
 	public String confirmRegist(@Validated @ModelAttribute
 			CaseRegistForm form, BindingResult result,
-			RedirectAttributes redirectAttributes) {
+			RedirectAttributes redirectAttributes,
+			Model model) {
 		// 入力エラーがある場合、ケース登録画面に戻す
 		if(result.hasErrors()) {
+			
+			// ステータスリストを取得し、モデルに格納
+			List<Status> list = statusService.findAll();
+			model.addAttribute("statusList",list);
+			
+			// ユーザリストを取得し、モデルに格納
+			List<User> userList = userSerivce.findAll();
+			model.addAttribute("userList", userList);
+			
 			return "case-regist";
 		}
 		
-		// とりあえず記載
-		System.out.println("登録フォーム");
-		System.out.println(form);
+		// form → entityへ
+		Case cases = new Case();
+		cases.setUserId(form.getUserId());
+		cases.setCaseName(form.getCaseName());
+		cases.setClientName(form.getClientName());
+		cases.setDetail(form.getDetail());
+		cases.setStatusCode(form.getStatusCode());
+		
+		caseService.regist(cases);
 		
 		// フラッシュスコープにメッセージを格納して、リダイレクト　
 		redirectAttributes.addFlashAttribute("msg", "タスク登録");

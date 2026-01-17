@@ -20,6 +20,7 @@
 			<result property="userName" column="user_name" />
 		</association>
 	</resultMap>
+	
 	<!-- 一覧全件検索 -->
 	<select id="selectListAll" 
 			resultMap="caseList">
@@ -37,4 +38,11 @@
 				 st.status_code, st.status_name, detail, ca.user_id, user_name
 		ORDER BY ca.case_id
 	</select>
+	
+	<!-- ケース登録 -->
+	<insert id="insert">
+		INSERT INTO cases (user_id, case_name, client_name, detail, status_code)
+		VALUES ( #{case.userId}, #{case.caseName}, #{case.clientName},
+				#{case.detail}, #{case.statusCode})
+	</insert>
 </mapper>
