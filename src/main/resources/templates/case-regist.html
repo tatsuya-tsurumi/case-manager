@@ -13,7 +13,13 @@
 			<tr>
 				<td class="guide">【ユーザID】</td>
 				<td>
-					<input type="text" th:field="*{userId}"><br>
+					<select th:field="*{userId}">
+						<option th:each="user : ${userList}"
+						th:value="${user.userId}"
+						th:text="${user.userId + ':' + user.userName}"
+						th:selected="${user.userId == userId}">
+						</option>
+					</select>
 					<div th:if="${#fields.hasErrors('userId')}" th:errors="*{userId}"
 					class="error-msg"></div>
 				</td>
@@ -41,7 +47,13 @@
 			<tr>
 				<td class="guide">【ステータスID】</td>
 				<td>
-					<input type="text" th:field="*{statusCode}"><br>
+					<select th:field="*{statusCode}">
+						<option th:each="status : ${statusList}"
+						th:value="${status.statusCode}"
+						th:text="${status.statusCode + ':' + status.statusName}"
+						th:selected="${status.statusCode == statusCode}">
+						</option>
+					</select>
 					<div th:if="${#fields.hasErrors('statusCode')}" th:errors="*{statusCode}"
 					class="error-msg"></div>
 				</td>
