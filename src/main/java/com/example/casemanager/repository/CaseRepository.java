@@ -15,4 +15,7 @@ public interface CaseRepository {
 	
 	// ケース登録
 	void insert(@Param("case") Case cases);
+	
+	// 条件検索
+	List<CaseSummary> selectListByConditions(@Param("case") Case cases);
 }

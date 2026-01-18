@@ -31,4 +31,11 @@ public class CaseServiceImpl implements CaseService {
 		caseRepository.insert(cases);
 	}
 
+	@Override
+	@Transactional(readOnly=true)
+	public List<CaseSummary> findListByConditions(Case cases) {
+		List<CaseSummary> list = caseRepository.selectListByConditions(cases);
+		return list;
+	}
+
 }

@@ -11,4 +11,7 @@ public interface CaseService {
 	
 	// 登録
 	void regist(Case cases);
+	
+	// 条件検索
+	List<CaseSummary> findListByConditions(Case cases);
 }

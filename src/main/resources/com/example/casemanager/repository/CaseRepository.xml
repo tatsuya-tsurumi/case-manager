@@ -45,4 +45,34 @@
 		VALUES ( #{case.userId}, #{case.caseName}, #{case.clientName},
 				#{case.detail}, #{case.statusCode})
 	</insert>
+	<!-- 条件検索 -->
+		<select id="selectListByConditions" 
+			resultMap="caseList">
+		SELECT ca.case_id, case_name, client_name, 
+				st.status_code, st.status_name, detail,
+				ca.user_id, user_name, COUNT(ta.task_id) task_cnt
+		FROM cases ca
+			 INNER JOIN status st
+			 		ON ca.status_code = st.status_code
+			 INNER JOIN users us
+			 		ON ca.user_id = us.user_id
+			 LEFT OUTER JOIN tasks ta
+			 		ON ca.case_id = ta.case_id
+		WHERE true
+			<if test="case.userId != null">
+				AND ca.user_id = #{case.userId}
+			</if>
+			<if test="case.caseName != null">
+				AND case_name LIKE #{case.caseName}
+			</if>
+			<if test="case.clientName != null">
+				AND client_name LIKE #{case.clientName}
+			</if>
+			<if test="case.statusCode != null">
+				AND ca.status_code = #{case.statusCode}
+			</if>
+		GROUP BY ca.case_id, user_id, case_name, client_name, 
+				 st.status_code, st.status_name, detail, ca.user_id, user_name
+		ORDER BY ca.case_id
+	</select>
 </mapper>
