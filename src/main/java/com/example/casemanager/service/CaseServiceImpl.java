@@ -35,7 +35,9 @@ public class CaseServiceImpl implements CaseService {
 	@Override
 	public List<CaseSummary> findListByConditions(Case cases) {
 		
-		return null;
+		List<CaseSummary> list = caseRepository.selectListByConditions(cases);
+		
+		return list;
 	}
 
 	@Override
