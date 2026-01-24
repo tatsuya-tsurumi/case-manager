@@ -16,7 +16,7 @@
 					<select th:field="*{userId}">
 						<option th:each="user : ${userList}"
 						th:value="${user.userId}"
-						th:text="${user.userId + ':' + user.userName}"
+						th:text="${user.userName}"
 						th:selected="${user.userId == userId}">
 						</option>
 					</select>
@@ -45,12 +45,12 @@
 					class="error-msg"></div>
 				</td>
 			<tr>
-				<td class="guide">【ステータスID】</td>
+				<td class="guide">【ステータス名】</td>
 				<td>
 					<select th:field="*{statusCode}">
 						<option th:each="status : ${statusList}"
 						th:value="${status.statusCode}"
-						th:text="${status.statusCode + ':' + status.statusName}"
+						th:text="${status.statusName}"
 						th:selected="${status.statusCode == statusCode}">
 						</option>
 					</select>

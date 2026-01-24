@@ -7,10 +7,13 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import com.example.casemanager.entity.CaseDetail;
 import com.example.casemanager.entity.CaseSummary;
+import com.example.casemanager.form.CaseSearchDetailForm;
 import com.example.casemanager.service.CaseService;
 
 import lombok.RequiredArgsConstructor;
+
 
 
 
@@ -23,7 +26,7 @@ public class CaseSearchController {
 	/*-- 最初のリクエスト */
 	@GetMapping("/top")
 	public String showListSelection() {
-		return "search-list";
+		return "case-list";
 	}
 	
 	/*-- 一覧検索リクエスト */
@@ -36,8 +39,22 @@ public class CaseSearchController {
 		// 結果を格納してHTMLテンプレート名でreturn
 		model.addAttribute("caseSummaryList", list);
 		
-		return "search-list";
+		return "case-list";
 	}
+	
+	/*-- 詳細検索リクエスト --*/
+	@PostMapping("/case-search-detail")
+	public String searchDetail(CaseSearchDetailForm form,
+					Model model) {
+		
+		// 詳細検索
+		CaseDetail caseDetail = caseService.findDetailByCaseId(form.getCaseId());
+		
+		model.addAttribute("caseDetail", caseDetail);
+		
+		return "case-detail";
+	}
+	
 	
 	
 }

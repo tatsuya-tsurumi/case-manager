@@ -1,0 +1,15 @@
+package com.example.casemanager.entity;
+
+import java.sql.Date;
+
+import lombok.Data;
+
+@Data
+public class Task {
+	private Integer taskId;
+	private Integer caseId;
+	private String title;
+	private Date deadline;
+	private String priority;
+	private Status status;
+}
