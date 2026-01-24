@@ -45,9 +45,8 @@
 		VALUES ( #{case.userId}, #{case.caseName}, #{case.clientName},
 				#{case.detail}, #{case.statusCode})
 	</insert>
-<<<<<<< HEAD
 	<!-- 条件検索 -->
-		<select id="selectListByConditions" 
+	<select id="selectListByConditions" 
 			resultMap="caseList">
 		SELECT ca.case_id, case_name, client_name, 
 				st.status_code, st.status_name, detail,
@@ -75,7 +74,7 @@
 		GROUP BY ca.case_id, user_id, case_name, client_name, 
 				 st.status_code, st.status_name, detail, ca.user_id, user_name
 		ORDER BY ca.case_id
-=======
+	</select>
 	
 	<!-- resultMap(1対Nの関係含む) -->
 	<resultMap id="caseDetail" 

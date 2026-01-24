@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<<<<<<< HEAD
 
 <head>
 	<meta charset="UTF-8">
@@ -77,53 +76,3 @@
 	</div>
 
 </body>
-
-=======
-<head>
-<meta charset="UTF-8">
-<title>ケース一覧</title>
-<link rel="stylesheet" th:href="@{/css/style.css}">
-</head>
-<body>
-	<br>
-	<!-- 登録へ -->
-	<form th:action="@{/case-show-regist}" method="post">
-		<input type="submit" value="ケース登録" class="btn">
-	</form>
-	<h2>ケース検索</h2>	
-	<!-- 検索 -->
-	<form th:action="@{/case-search-list}" method="post">
-		<input type="submit" value="検索" class="btn">
-	</form>
-	
-	<!-- 表示 -->
-	<div th:if="${caseSummaryList} != null">
-		<h2>ケース一覧</h2>
-		
-		<table class="case-list">
-			<tr>
-				<th>詳細</th> <th>ケースID</th><th>担当者</th><th>ケース名</th><th>クライアント名</th>
-				<th>ステータス</th><th>詳細</th><th>タスク件数</th>
-			</tr>
-			<tr th:each="case : ${caseSummaryList}">
-				<td>
-					<form th:action="@{/case-search-detail}" method="post">
-						<input type="hidden" name="caseId" th:value="${case.caseId}">
-						<input type="submit" value="詳細" class="tbtn">
-					</form>
-				</td>
-				<td th:text="${case.caseId}"></td>
-				<td th:text="${case.user.userName}"></td>
-				<td th:text="${case.caseName}"></td>
-				<td th:text="${case.clientName}"></td>
-				<td th:text="${case.status.statusName}"></td>
-				<td th:text="${case.detail}"></td>
-				<td th:text="${case.taskCnt}"></td>
-			</tr>
-		</table>
-		
-	</div>
-	
-</body>
->>>>>>> refs/heads/local
-</html>
