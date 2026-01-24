@@ -105,9 +105,9 @@ public class CaseEditController {
 		cases.setDetail(form.getDetail());
 		cases.setStatusCode(form.getStatusCode());
 		
-		// とりあえず表示
-		System.out.println("更新内容");
-		System.out.println(cases);
+		// 更新処理
+		caseService.edit(cases);
+		
 		
 		// フラッシュスコープにメッセージを格納して、リダイレクト　
 		redirectAttributes.addFlashAttribute("msg", "ケース更新");

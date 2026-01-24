@@ -128,4 +128,18 @@
 		WHERE ca.case_id = #{caseId}
 		ORDER BY ta.task_id;
 	</select>
+	<!-- ケース更新 -->
+	<update id="update">
+		UPDATE
+			cases
+		SET
+			user_id     = #{case.userId},
+			case_name   = #{case.caseName},
+			client_name = #{case.clientName},
+			detail      = #{case.detail},
+			status_code = #{case.statusCode}
+		WHERE
+			case_id     = #{case.caseId}
+			
+	</update>
 </mapper>

@@ -15,6 +15,10 @@ public interface CaseService {
 	
 	// 条件検索
 	List<CaseSummary> findListByConditions(Case cases);
+	
 	// 詳細検索
 	CaseDetail findDetailByCaseId(Integer caseId);
+	
+	// 更新
+	void edit(Case cases);
 }

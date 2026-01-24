@@ -19,6 +19,10 @@ public interface CaseRepository {
 	
 	// 条件検索
 	List<CaseSummary> selectListByConditions(@Param("case") Case cases);
+	
 	// 詳細検索
 	CaseDetail selectDetailByCaseId(@Param("caseId") Integer caseId);
+	
+	// 更新
+	void update(@Param("case") Case cases);
 }

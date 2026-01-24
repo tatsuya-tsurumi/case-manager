@@ -46,5 +46,12 @@ public class CaseServiceImpl implements CaseService {
 		return caseDetail;
 	}
 
+	@Override
+	@Transactional
+	public void edit(Case cases) {
+		
+		caseRepository.update(cases);
+	}
+
 
 }
