@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.example.casemanager.entity.Case;
+import com.example.casemanager.entity.CaseDetail;
 import com.example.casemanager.entity.CaseSummary;
 import com.example.casemanager.repository.CaseRepository;
 
@@ -33,9 +34,17 @@ public class CaseServiceImpl implements CaseService {
 
 	@Override
 	@Transactional(readOnly=true)
+<<<<<<< HEAD
 	public List<CaseSummary> findListByConditions(Case cases) {
 		List<CaseSummary> list = caseRepository.selectListByConditions(cases);
 		return list;
+=======
+	public CaseDetail findDetailByCaseId(Integer caseId) {
+		
+		CaseDetail caseDetail = caseRepository.selectDetailByCaseId(caseId);
+		
+		return caseDetail;
+>>>>>>> refs/heads/local
 	}
 
 }

@@ -12,7 +12,7 @@
 	<table class="detail-table"　th:object="${caseRegistForm}">
 		<tr>
 			<td class="guide">【ユーザID】</td>
-			<td th:text="*{userId + ':' + userName}"></td>
+			<td th:text="*{userName}"></td>
 		<tr>
 			<td class="guide">【ケース名】</td>
 			<td th:text="*{caseName}"></td>
@@ -24,7 +24,7 @@
 			<td th:text="*{detail}" class="long"></td>
 		<tr>
 			<td class="guide">【ステータスID】</td>
-			<td th:text="*{statusCode + ':' + statusName}"></td>
+			<td th:text="*{statusName}"></td>
 		</tr>
 	</table>
 	<br>

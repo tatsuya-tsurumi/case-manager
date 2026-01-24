@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<title>ケース詳細</title>
+	<link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+	<h2>ケース詳細</h2>
+	<!-- ケース詳細 -->
+	<table class="detail-table" th:object="${caseDetail}">
+		<tr>
+			<td class="guide">【ケースID】</td>
+			<td th:text="*{caseId}"></td>
+		</tr>
+		<tr>
+			<td class="guide">【ユーザ】</td>
+			<td th:text="*{user.userName}"></td>
+		</tr>
+		<tr>
+			<td class="guide">【ケース名】</td>
+			<td th:text="*{caseName}"></td>
+		</tr>
+		<tr>
+			<td class="guide">【クライアント名】</td>
+			<td th:text="*{clientName}"></td>
+		</tr>
+		<tr>
+			<td class="guide">【詳細】</td>
+			<td th:text="*{detail}"></td>
+		</tr>
+		<tr>
+			<td class="guide">【ステータス】</td>
+			<td th:text="*{status.statusName}"></td>
+		</tr>
+	</table>
+	<br>
+	<br><br>
+	<!-- タスク一覧 -->
+	<div th:if="${caseDetail.taskList.size() != 0}">
+		<table class="case-list">
+			<tr>
+				<th>タスクID</th><th>タイトル</th><th>期限</th>
+				<th>重要度</th><th>ステータス</th>
+			</tr>
+			<tr th:each="task : ${caseDetail.taskList}">
+				<td th:text="${task.taskId}"></td>
+				<td th:text="${task.title}"></td>
+				<td th:text="${task.deadline}"></td>
+				<td th:text="${task.priority}"></td>
+				<td th:text="${task.status.statusName}"></td>
+			</tr>
+		</table>
+	</div>
+	<br>
+	<br>
+	<a th:href="@{/top}">トップページに戻る</a>
+</body>
+</html>

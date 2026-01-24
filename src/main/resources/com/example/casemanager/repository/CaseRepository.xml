@@ -45,6 +45,7 @@
 		VALUES ( #{case.userId}, #{case.caseName}, #{case.clientName},
 				#{case.detail}, #{case.statusCode})
 	</insert>
+<<<<<<< HEAD
 	<!-- 条件検索 -->
 		<select id="selectListByConditions" 
 			resultMap="caseList">
@@ -74,5 +75,59 @@
 		GROUP BY ca.case_id, user_id, case_name, client_name, 
 				 st.status_code, st.status_name, detail, ca.user_id, user_name
 		ORDER BY ca.case_id
+=======
+	
+	<!-- resultMap(1対Nの関係含む) -->
+	<resultMap id="caseDetail" 
+			   type="com.example.casemanager.entity.CaseDetail">
+		<id property="caseId" column="case_id" />
+		<result property="caseName" column="case_name" />
+		<result property="clientName" column="client_name" />
+		<result property="detail" column="detail" />
+		<association property="status" 
+					 javaType="com.example.casemanager.entity.Status">
+			<id property="statusCode" column="status_code" />
+			<result property="statusName" column="status_name" />
+		</association>
+		<association property="user" 
+					 javaType="com.example.casemanager.entity.User">
+			<id property="userId" column="user_id" />
+			<result property="userName" column="user_name" />
+		</association>
+		<collection property="taskList" ofType="com.example.casemanager.entity.Task"
+					notNullColumn="task_id">
+			<id property="taskId" column="task_id" />
+			<result property="caseId" column="t_case_id" />
+			<result property="title" column="title" />
+			<result property="deadline" column="deadline" />
+			<result property="priority" column="priority" />
+			<association property="status"
+                     javaType="com.example.casemanager.entity.Status">
+            	<id property="statusCode" column="ta_status_code" />
+            	<result property="statusName" column="ta_status_name" />
+        	</association>
+		</collection>
+	</resultMap>
+	<!-- 詳細検索 -->
+	<select id="selectDetailByCaseId"
+			resultMap="caseDetail">
+		SELECT ca.case_id, case_name, client_name, detail,
+			   st.status_code, st.status_name,
+			   us.user_id, us.user_name,
+			   ta.task_id, ta.case_id t_case_id, ta.title,
+			   ta.deadline, ta.priority, ta.status_code ta_status_code, 
+			   ts.status_name ta_status_name
+			FROM cases ca
+				 INNER JOIN status st
+				 	ON ca.status_code = st.status_code
+				 INNER JOIN users us
+				 	ON ca.user_id = us.user_id
+				 LEFT OUTER JOIN tasks ta
+				 	ON ca.case_id = ta.case_id
+				 LEFT OUTER JOIN status ts
+    				ON ta.status_code = ts.status_code
+		WHERE ca.case_id = #{caseId}
+		ORDER BY ta.task_id;
+>>>>>>> refs/heads/local
 	</select>
 </mapper>

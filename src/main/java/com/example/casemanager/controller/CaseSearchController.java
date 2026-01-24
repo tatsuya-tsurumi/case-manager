@@ -10,17 +10,31 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
+<<<<<<< HEAD
 import com.example.casemanager.entity.Case;
+=======
+import com.example.casemanager.entity.CaseDetail;
+>>>>>>> refs/heads/local
 import com.example.casemanager.entity.CaseSummary;
+<<<<<<< HEAD
 import com.example.casemanager.entity.Status;
 import com.example.casemanager.entity.User;
 import com.example.casemanager.form.CaseSearchListForm;
+=======
+import com.example.casemanager.form.CaseSearchDetailForm;
+>>>>>>> refs/heads/local
 import com.example.casemanager.service.CaseService;
 import com.example.casemanager.service.StatusService;
 import com.example.casemanager.service.UserService;
 
 import lombok.RequiredArgsConstructor;
 
+<<<<<<< HEAD
+=======
+
+
+
+>>>>>>> refs/heads/local
 @Controller
 @RequiredArgsConstructor
 public class CaseSearchController {
@@ -30,6 +44,7 @@ public class CaseSearchController {
 	private final UserService userService;
 	/*-- 最初のリクエスト */
 	@GetMapping("/top")
+<<<<<<< HEAD
 	public String showListSelection(
 			@ModelAttribute CaseSearchListForm form,
 			Model model) {
@@ -42,6 +57,9 @@ public class CaseSearchController {
 		List<User> userList = userService.findAll();
 		model.addAttribute("userList", userList);
 		
+=======
+	public String showListSelection() {
+>>>>>>> refs/heads/local
 		return "case-list";
 	}
 	
@@ -88,6 +106,20 @@ public class CaseSearchController {
 		
 		return "case-list";
 	}
+	
+	/*-- 詳細検索リクエスト --*/
+	@PostMapping("/case-search-detail")
+	public String searchDetail(CaseSearchDetailForm form,
+					Model model) {
+		
+		// 詳細検索
+		CaseDetail caseDetail = caseService.findDetailByCaseId(form.getCaseId());
+		
+		model.addAttribute("caseDetail", caseDetail);
+		
+		return "case-detail";
+	}
+	
 	
 	
 }

@@ -94,7 +94,26 @@ input.long {
 	color: red;
 }
 
+<<<<<<< HEAD
 .condition_table {
 	background-color: red;
+=======
+.tbtn {
+	border: 2px solid steelblue;
+	padding: 2px 10px;
+	font-size: 16px;
+	color: steelblue;
+	cursor: pointer;
+}
+
+.tbtn:hover {
+	color: #fff;
+	background-color: steelblue;
+}
+
+.task-list {
+	background-color: #afeeee;
+	width: 60%;
+>>>>>>> refs/heads/local
 }
 
