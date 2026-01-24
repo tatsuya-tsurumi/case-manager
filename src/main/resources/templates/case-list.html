@@ -54,6 +54,7 @@
 
 		<table class="case-list">
 			<tr>
+				<th>詳細</th>
 				<th>ケースID</th>
 				<th>担当者</th>
 				<th>ケース名</th>
@@ -63,6 +64,12 @@
 				<th>タスク件数</th>
 			</tr>
 			<tr th:each="case : ${caseSummaryList}">
+				<td>
+					<form th:action="@{/case-search-detail}" method="post">
+						<input type="hidden" name="caseId" th:value="${case.caseId}">
+						<input type="submit" value="詳細" class="tbtn">
+					</form>
+				</td>
 				<td th:text="${case.caseId}"></td>
 				<td th:text="${case.user.userName}"></td>
 				<td th:text="${case.caseName}"></td>
