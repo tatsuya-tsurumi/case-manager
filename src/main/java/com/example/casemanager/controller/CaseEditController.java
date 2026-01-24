@@ -13,7 +13,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.example.casemanager.entity.Case;
 import com.example.casemanager.entity.Status;
 import com.example.casemanager.entity.User;
-import com.example.casemanager.form.CaseRegistForm;
+import com.example.casemanager.form.CaseEditForm;
 import com.example.casemanager.service.CaseService;
 import com.example.casemanager.service.StatusService;
 import com.example.casemanager.service.UserService;
@@ -22,15 +22,15 @@ import lombok.RequiredArgsConstructor;
 
 @Controller
 @RequiredArgsConstructor
-public class CaseRegistController {
+public class CaseEditController {
 	
 	private final StatusService statusService;
 	private final UserService userSerivce;
 	private final CaseService caseService;
 	
-	/*-- ケース登録画面表示リクエスト --*/
-	@PostMapping("/case-show-regist")
-	public String showRegist(@ModelAttribute CaseRegistForm form,
+	/*-- ケース編集画面表示リクエスト --*/
+	@PostMapping("/case-show-edit")
+	public String showEdit(@ModelAttribute CaseEditForm form,
 			Model model) {
 		
 		// ステータスリストを取得し、モデルに格納
@@ -41,16 +41,16 @@ public class CaseRegistController {
 		List<User> userList = userSerivce.findAll();
 		model.addAttribute("userList", userList);
 		
-		return "case-regist";
+		return "case-edit";
 	}
 	
-	/*-- ケース登録リクエスト(確認画面へ) --*/
-	@PostMapping("/case-regist")
-	public String regist(@Validated @ModelAttribute
-			CaseRegistForm form, BindingResult result,
+	/*-- ケース編集リクエスト(確認画面へ) --*/
+	@PostMapping("/case-edit")
+	public String edit(@Validated @ModelAttribute
+			CaseEditForm form, BindingResult result,
 			Model model) {
 		
-		// 入力エラーがある場合、ケース登録画面に戻す
+		// 入力エラーがある場合、ケース編集画面に戻す
 		if(result.hasErrors()) {
 			
 			// ステータスリストを取得し、モデルに格納
@@ -61,7 +61,7 @@ public class CaseRegistController {
 			List<User> userList = userSerivce.findAll();
 			model.addAttribute("userList", userList);
 			
-			return "case-regist";
+			return "case-edit";
 		}
 		
 		// ステータス名をformに格納
@@ -73,13 +73,13 @@ public class CaseRegistController {
 		form.setUserName(user.getUserName());
 		
 		// 正常な場合、確認画面へ遷移
-		return "case-confirm-regist";
+		return "case-confirm-edit";
 	}
 	
-	/*-- ケース登録リクエスト(実際に登録) --*/
-	@PostMapping("/case-confirm-regist")
-	public String confirmRegist(@Validated @ModelAttribute
-			CaseRegistForm form, BindingResult result,
+	/*-- ケース編集リクエスト(実際に更新) --*/
+	@PostMapping("/case-confirm-edit")
+	public String confirmEdit(@Validated @ModelAttribute
+			CaseEditForm form, BindingResult result,
 			RedirectAttributes redirectAttributes,
 			Model model) {
 		// 入力エラーがある場合、ケース登録画面に戻す
@@ -93,21 +93,24 @@ public class CaseRegistController {
 			List<User> userList = userSerivce.findAll();
 			model.addAttribute("userList", userList);
 			
-			return "case-regist";
+			return "case-edit";
 		}
 		
 		// form → entityへ
 		Case cases = new Case();
+		cases.setCaseId(form.getCaseId());
 		cases.setUserId(form.getUserId());
 		cases.setCaseName(form.getCaseName());
 		cases.setClientName(form.getClientName());
 		cases.setDetail(form.getDetail());
 		cases.setStatusCode(form.getStatusCode());
 		
-		caseService.regist(cases);
+		// とりあえず表示
+		System.out.println("更新内容");
+		System.out.println(cases);
 		
 		// フラッシュスコープにメッセージを格納して、リダイレクト　
-		redirectAttributes.addFlashAttribute("msg", "ケース登録");
+		redirectAttributes.addFlashAttribute("msg", "ケース更新");
 		
 		return "redirect:case-complete";
 	}

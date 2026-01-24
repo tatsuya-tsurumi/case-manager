@@ -2,14 +2,21 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
-<title>ケース登録</title>
+<title>ケース編集</title>
 <link rel="stylesheet" th:href="@{/css/style.css}">
 </head>
 <body>
-	<h2>ケース登録</h2>
+	<h2>ケース編集</h2>
 	
-	<form th:action="@{/case-regist}" method="post" th:object="${caseRegistForm}">
+	<form th:action="@{/case-edit}" method="post" th:object="${caseEditForm}">
 		<table class="detail-table">
+			<tr>
+				<td class="guide">【ケースID】</td>
+				<td>
+					<span th:text="*{caseId}"></span>
+					<input type="hidden" th:field="*{caseId}">
+				</td>
+			</tr>
 			<tr>
 				<td class="guide">【ユーザ名】</td>
 				<td>
@@ -60,7 +67,7 @@
 			</tr>
 		</table>
 		<br>
-		<input type="submit" value="登録" class="btn">
+		<input type="submit" value="更新" class="btn">
 		<br>
 		<br>
 		<a th:href="@{/top}">トップページに戻る</a>

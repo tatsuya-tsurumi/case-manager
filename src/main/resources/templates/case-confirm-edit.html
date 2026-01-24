@@ -3,13 +3,17 @@
 
 <head>
 	<meta charset="UTF-8">
-	<title>ケース登録確認</title>
+	<title>ケース編集確認</title>
 	<link rel="stylesheet" th:href="@{/css/style.css}">
 </head>
 <body>
-	<h2>ケース登録確認</h2>
+	<h2>ケース編集確認</h2>
 
-	<table class="detail-table"　th:object="${caseRegistForm}">
+	<table class="detail-table"　th:object="${caseEditForm}">
+		<tr>
+			<td class="guide">【ケースID】</td>
+			<td th:text="*{caseId}"></td>
+		</tr>
 		<tr>
 			<td class="guide">【ユーザ名】</td>
 			<td th:text="*{userName}"></td>
@@ -29,18 +33,20 @@
 	</table>
 	<br>
 	
-	<form th:action="@{/case-confirm-regist}" method="post"
-			th:object="${caseRegistForm}">
+	<form th:action="@{/case-confirm-edit}" method="post"
+			th:object="${caseEditForm}">
+		<input type="hidden" th:field="*{caseId}">
 		<input type="hidden" th:field="*{userId}">
 		<input type="hidden" th:field="*{caseName}">
 		<input type="hidden" th:field="*{clientName}">
 		<input type="hidden" th:field="*{detail}">
 		<input type="hidden" th:field="*{statusCode}">
-		<input type="submit" value="登録実行" class="btn">
+		<input type="submit" value="更新実行" class="btn">
 	</form>
 	<br>
-	<form th:action="@{/case-show-regist}" method="post"
-			th:object="${caseRegistForm}">
+	<form th:action="@{/case-show-edit}" method="post"
+			th:object="${caseEditForm}">
+		<input type="hidden" th:field="*{caseId}">
 		<input type="hidden" th:field="*{userId}">
 		<input type="hidden" th:field="*{caseName}">
 		<input type="hidden" th:field="*{clientName}">

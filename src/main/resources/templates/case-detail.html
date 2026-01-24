@@ -36,6 +36,16 @@
 		</tr>
 	</table>
 	<br>
+	<form th:action="@{/case-show-edit}" method="post" th:object="${caseDetail}">
+		<input type="hidden" th:field="*{caseId}">
+		<input type="hidden" name="userId" th:value="user.userId">
+		<input type="hidden" th:field="*{caseName}">
+		<input type="hidden" th:field="*{clientName}">
+		<input type="hidden" th:field="*{detail}">
+		<input type="hidden" name="statusCode" th:value="status.statusCode">
+		<input type="submit" value="編集" class="btn">
+	</form>
+	<br>
 	<br><br>
 	<!-- タスク一覧 -->
 	<div th:if="${caseDetail.taskList.size() != 0}">
