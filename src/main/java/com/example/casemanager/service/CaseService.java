@@ -13,11 +13,8 @@ public interface CaseService {
 	// 登録
 	void regist(Case cases);
 	
-<<<<<<< HEAD
 	// 条件検索
 	List<CaseSummary> findListByConditions(Case cases);
-=======
 	// 詳細検索
 	CaseDetail findDetailByCaseId(Integer caseId);
->>>>>>> refs/heads/local
 }

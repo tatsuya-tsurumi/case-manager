@@ -17,11 +17,8 @@ public interface CaseRepository {
 	// ケース登録
 	void insert(@Param("case") Case cases);
 	
-<<<<<<< HEAD
 	// 条件検索
 	List<CaseSummary> selectListByConditions(@Param("case") Case cases);
-=======
 	// 詳細検索
 	CaseDetail selectDetailByCaseId(@Param("caseId") Integer caseId);
->>>>>>> refs/heads/local
 }

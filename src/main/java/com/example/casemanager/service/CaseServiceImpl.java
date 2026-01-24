@@ -33,18 +33,16 @@ public class CaseServiceImpl implements CaseService {
 	}
 
 	@Override
-	@Transactional(readOnly=true)
-<<<<<<< HEAD
 	public List<CaseSummary> findListByConditions(Case cases) {
-		List<CaseSummary> list = caseRepository.selectListByConditions(cases);
-		return list;
-=======
-	public CaseDetail findDetailByCaseId(Integer caseId) {
 		
-		CaseDetail caseDetail = caseRepository.selectDetailByCaseId(caseId);
-		
-		return caseDetail;
->>>>>>> refs/heads/local
+		return null;
 	}
+
+	@Override
+	public CaseDetail findDetailByCaseId(Integer caseId) {
+		CaseDetail caseDetail = caseRepository.selectDetailByCaseId(caseId);
+		return caseDetail;
+	}
+
 
 }
