@@ -149,4 +149,12 @@
 			case_id     = #{case.caseId}
 			
 	</update>
+	<!-- ケース削除 -->
+	<delete id="delete">
+		DELETE
+		FROM
+			cases
+		WHERE
+			case_id = caseId}
+	</delete>
 </mapper>

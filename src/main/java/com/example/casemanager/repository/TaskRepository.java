@@ -10,6 +10,9 @@ public interface TaskRepository {
 	// タスク登録
 	void insert(@Param("task") Task task);
 	
-	// タスク削除
+	// タスク1件削除
 	void delete(@Param("taskId") Integer taskId);
+	
+	// ケースIDを指定して削除
+	void deleteByCaseId(@Param("caseId") Integer caseId);
 }

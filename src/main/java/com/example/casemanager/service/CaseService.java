@@ -21,4 +21,7 @@ public interface CaseService {
 	
 	// 更新
 	void edit(Case cases);
+	
+	// 削除
+	void remove(Integer caseId);
 }

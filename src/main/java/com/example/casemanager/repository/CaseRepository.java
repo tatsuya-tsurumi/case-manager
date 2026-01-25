@@ -25,4 +25,7 @@ public interface CaseRepository {
 	
 	// 更新
 	void update(@Param("case") Case cases);
+	
+	// 削除
+	void delete(@Param("caseId") Integer caseId);
 }

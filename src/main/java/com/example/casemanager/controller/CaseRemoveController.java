@@ -9,8 +9,6 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.example.casemanager.entity.CaseDetail;
 import com.example.casemanager.form.CaseRemoveForm;
 import com.example.casemanager.service.CaseService;
-import com.example.casemanager.service.PriorityService;
-import com.example.casemanager.service.StatusService;
 
 import lombok.RequiredArgsConstructor;
 
@@ -18,8 +16,6 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class CaseRemoveController {
 	
-	private final StatusService statusService;
-	private final PriorityService priorityService;
 	private final CaseService caseService;
 	
 	/*-- ケース削除リクエスト(確認画面へ) --*/
@@ -40,9 +36,8 @@ public class CaseRemoveController {
 			CaseRemoveForm form, 
 			RedirectAttributes redirectAttributes) {
 		
-		// とりあえず表示
-		System.out.println("ケース削除");
-		System.out.println(form);
+		// 削除処理
+		caseService.remove(form.getCaseId());
 		
 		// フラッシュスコープにメッセージを格納して、リダイレクト　
 		redirectAttributes.addFlashAttribute("msg", "ケース削除");

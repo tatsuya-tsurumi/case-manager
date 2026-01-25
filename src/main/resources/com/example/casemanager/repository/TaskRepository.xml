@@ -16,4 +16,14 @@
 		WHERE
 			task_id = #{taskId}
 	</delete>
+	
+	<!-- ケースIDを指定して削除 -->
+	<delete id="deleteByCaseId">
+		DELETE
+		FROM 
+			tasks
+		WHERE
+			case_id = #{caseId}
+	</delete>
+	
 </mapper>
