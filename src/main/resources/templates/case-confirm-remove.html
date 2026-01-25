@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<title>ケース削除確認</title>
+	<link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+	<h2>ケース削除確認</h2>
+
+	<table class="detail-table"　th:object="${caseDetail}">
+		<tr>
+			<td class="guide">【ケースID】</td>
+			<td th:text="*{caseId}"></td>
+		</tr>
+		<tr>
+			<td class="guide">【ユーザ名】</td>
+			<td th:text="*{user.userName}"></td>
+		<tr>
+			<td class="guide">【ケース名】</td>
+			<td th:text="*{caseName}"></td>
+		<tr>
+			<td class="guide">【クライアント名】</td>
+			<td th:text="*{clientName}"></td>
+		<tr>
+			<td class="guide">【詳細】</td>
+			<td th:text="*{detail}" class="long"></td>
+		<tr>
+			<td class="guide">【ステータス】</td>
+			<td th:text="*{status.statusName}"></td>
+		</tr>
+	</table>
+	<br>
+	
+	<!-- タスク一覧 -->
+	<div th:if="${caseDetail.taskList.size()} != 0">
+		<table class="task-list">
+			<tr>
+				<th>タスクID</th><th>タイトル</th><th>期限</th>
+				<th>重要度</th><th>ステータス</th>
+			</tr>
+			<tr th:each="task : ${caseDetail.taskList}">
+				<td th:text="${task.taskId}"></td>
+				<td th:text="${task.title}"></td>
+				<td th:text="${task.deadline}"></td>
+				<td th:text="${task.priority.priorityName}"></td>
+				<td th:text="${task.status.statusName}"></td>
+			</tr>
+		</table>
+		<div>(タスクは全て削除されます)</div>
+	</div>
+	
+	<br>
+	<form th:action="@{/case-confirm-remove}" method="post"
+			th:object="${caseDetail}">
+		<input type="hidden" th:field="*{caseId}">
+		<input type="submit" value="削除実行" class="btn">
+	</form>
+	<br>
+	<form th:action="@{/case-search-detail}" method="post"
+			th:object="${caseDetail}">
+		<input type="hidden" th:field="*{caseId}">
+		<input type="submit" value="戻る" class="btn">
+	</form>
+</body>
+
+</html>

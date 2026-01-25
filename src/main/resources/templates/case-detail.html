@@ -46,6 +46,13 @@
 		<input type="submit" value="編集" class="btn">
 	</form>
 	<br>
+	<form th:action="@{/case-remove}" method="post" th:object="${caseDetail}">
+		<input type="hidden" th:field="*{caseId}">
+		<input type="submit" value="削除" class="btn">
+	</form>
+	<div th:if="${caseDetail.taskList.size()} != 0">
+		(タスクは全て削除)
+	</div>
 	<br><br>
 	
 	<!-- タスク一覧 -->
