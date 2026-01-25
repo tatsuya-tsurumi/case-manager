@@ -7,5 +7,9 @@ import com.example.casemanager.entity.Task;
 
 @Mapper
 public interface TaskRepository {
+	// タスク登録
 	void insert(@Param("task") Task task);
+	
+	// タスク削除
+	void delete(@Param("taskId") Integer taskId);
 }

@@ -46,9 +46,8 @@ public class TaskRemoveController {
 			TaskRemoveForm form, 
 			RedirectAttributes redirectAttributes) {
 		
-		// とりあえず表示
-		System.out.println("メモ削除");
-		System.out.println(form);
+		// タスク削除処理
+		taskService.remove(form.getTaskId());
 		
 		// フラッシュスコープにメッセージを格納して、リダイレクト　
 		redirectAttributes.addFlashAttribute("msg", "タスク削除");

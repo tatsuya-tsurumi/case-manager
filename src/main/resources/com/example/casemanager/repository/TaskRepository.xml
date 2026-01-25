@@ -7,4 +7,13 @@
 		VALUES ( #{task.caseId}, #{task.title},#{task.deadline},#{task.priorityCode},
 				#{task.statusCode})
 	</insert>
+	
+	<!-- タスク削除 -->
+	<delete id="delete">
+		DELETE
+		FROM
+			tasks
+		WHERE
+			task_id = #{taskId}
+	</delete>
 </mapper>

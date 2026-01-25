@@ -17,9 +17,13 @@ public class TaskServiceImpl implements TaskService {
 	@Override
 	@Transactional
 	public void regist(Task task) {
-		
 		taskRepository.insert(task);
+	}
 
+	@Override
+	@Transactional
+	public void remove(Integer taskId) {
+		taskRepository.delete(taskId);	
 	}
 
 }
