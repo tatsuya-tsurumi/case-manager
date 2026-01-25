@@ -12,4 +12,10 @@ public class CommonController {
 		return "case-complete";
 	}
 	
+	/*-- 完了後のリダイレクト先(タスク完了系) --*/
+	@GetMapping("/task-complete")
+	public String completeTask() {
+		return "task-complete";
+	}
+	
 }

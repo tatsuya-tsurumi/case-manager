@@ -47,6 +47,7 @@
 	</form>
 	<br>
 	<br><br>
+	
 	<!-- タスク一覧 -->
 	<div th:if="${caseDetail.taskList.size() != 0}">
 		<table class="case-list">
@@ -58,11 +59,17 @@
 				<td th:text="${task.taskId}"></td>
 				<td th:text="${task.title}"></td>
 				<td th:text="${task.deadline}"></td>
-				<td th:text="${task.priority}"></td>
+				<td th:text="${task.priority.priorityName}"></td>
 				<td th:text="${task.status.statusName}"></td>
 			</tr>
 		</table>
 	</div>
+	<br>
+	<!-- タスク登録へ -->
+	<form th:action="@{/task-show-regist}" method="post" th:object="${caseDetail}">
+		<input type="hidden" th:field="*{caseId}">
+		<input type="submit" value="タスク登録" class="btn">
+	</form>
 	<br>
 	<br>
 	<a th:href="@{/top}">トップページに戻る</a>

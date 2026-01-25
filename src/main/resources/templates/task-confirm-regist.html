@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<title>タスク登録確認</title>
+	<link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+	<h2>タスク登録確認</h2>
+
+	<table class="detail-table"　th:object="${taskRegistForm}">
+			<td class="guide">【ケースID】</td>
+			<td th:text="*{caseId}"></td>
+		<tr>
+			<td class="guide">【タイトル】</td>
+			<td th:text="*{title}"></td>
+		<tr>
+			<td class="guide">【期限】</td>
+			<td th:text="*{deadline}"></td>
+		<tr>
+			<td class="guide">【重要度】</td>
+			<td th:text="*{priorityName}"></td>
+		</tr>
+		<tr>
+			<td class="guide">【ステータス】</td>
+			<td th:text="*{statusName}"></td>
+		</tr>
+	</table>
+	<br>
+	
+	<form th:action="@{/task-confirm-regist}" method="post"
+			th:object="${taskRegistForm}">
+		<input type="hidden" th:field="*{caseId}">
+		<input type="hidden" th:field="*{title}">
+		<input type="hidden" th:field="*{deadline}">
+		<input type="hidden" th:field="*{priorityCode}">
+		<input type="hidden" th:field="*{statusCode}">
+		<input type="submit" value="登録実行" class="btn">
+	</form>
+	<br>
+	<form th:action="@{/task-show-regist}" method="post"
+			th:object="${taskRegistForm}">
+		<input type="hidden" th:field="*{caseId}">
+		<input type="hidden" th:field="*{title}">
+		<input type="hidden" th:field="*{deadline}">
+		<input type="hidden" th:field="*{priorityCode}">
+		<input type="hidden" th:field="*{statusCode}">
+		<input type="submit" value="戻る" class="btn">
+	</form>
+</body>
+</html>

@@ -99,7 +99,11 @@
 			<result property="caseId" column="t_case_id" />
 			<result property="title" column="title" />
 			<result property="deadline" column="deadline" />
-			<result property="priority" column="priority" />
+			<association property="priority"
+                     javaType="com.example.casemanager.entity.Priority">
+            	<id property="priorityCode" column="ta_priority_code" />
+            	<result property="priorityName" column="pr_priority_name" />
+        	</association>
 			<association property="status"
                      javaType="com.example.casemanager.entity.Status">
             	<id property="statusCode" column="ta_status_code" />
@@ -114,8 +118,9 @@
 			   st.status_code, st.status_name,
 			   us.user_id, us.user_name,
 			   ta.task_id, ta.case_id t_case_id, ta.title,
-			   ta.deadline, ta.priority, ta.status_code ta_status_code, 
-			   ts.status_name ta_status_name
+			   ta.deadline, 
+			   ta.priority_code ta_priority_code, pr.priority_name pr_priority_name, 
+			   ta.status_code ta_status_code, ts.status_name ta_status_name
 			FROM cases ca
 				 INNER JOIN status st
 				 	ON ca.status_code = st.status_code
@@ -125,6 +130,8 @@
 				 	ON ca.case_id = ta.case_id
 				 LEFT OUTER JOIN status ts
     				ON ta.status_code = ts.status_code
+    			LEFT OUTER JOIN priority pr
+    				ON ta.priority_code = pr.priority_code
 		WHERE ca.case_id = #{caseId}
 		ORDER BY ta.task_id;
 	</select>

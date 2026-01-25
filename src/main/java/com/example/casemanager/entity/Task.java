@@ -10,6 +10,6 @@ public class Task {
 	private Integer caseId;
 	private String title;
 	private Date deadline;
-	private String priority;
+	private Priority priority;
 	private Status status;
 }

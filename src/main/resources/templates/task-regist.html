@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>タスク登録</title>
+<link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+	<h2>タスク登録</h2>
+	
+	<form th:action="@{/task-regist}" method="post" th:object="${taskRegistForm}">
+		<table class="detail-table">
+			<tr>
+				<td class="guide">【ケースID】</td>
+				<td>
+					<span th:text="*{caseId}"></span>
+					<input type="hidden" th:field="*{caseId}">
+				</td>
+			</tr>
+			<tr>
+				<td class="guide">【タイトル】</td>
+				<td>
+					<input type="text" th:field="*{title}"><br>
+					<div th:if="${#fields.hasErrors('title')}" th:errors="*{title}"
+					class="error-msg"></div>
+				</td>
+			</tr>
+			<tr>
+				<td class="guide">【期限】</td>
+				<td>
+					<input type="date" th:field="*{deadline}"><br>
+					<div th:if="${#fields.hasErrors('deadline')}" th:errors="*{deadline}"
+					class="error-msg"></div>
+				</td>
+			</tr>
+			<tr>
+				<td class="guide">【重要度】</td>
+				<td>
+					<select th:field="*{priorityCode}">
+						<option th:each="priority : ${priorityList}"
+						th:value="${priority.priorityCode}"
+						th:text="${priority.priorityName}"
+						th:selected="${priority.priorityCode == priorityCode}">
+						</option>
+					</select>
+					<div th:if="${#fields.hasErrors('priorityCode')}" th:errors="*{priorityCode}"
+					class="error-msg"></div>
+				</td>
+			</tr>
+			<tr>
+				<td class="guide">【ステータス名】</td>
+				<td>
+					<select th:field="*{statusCode}">
+						<option th:each="status : ${statusList}"
+						th:value="${status.statusCode}"
+						th:text="${status.statusName}"
+						th:selected="${status.statusCode == statusCode}">
+						</option>
+					</select>
+					<div th:if="${#fields.hasErrors('statusCode')}" th:errors="*{statusCode}"
+					class="error-msg"></div>
+				</td>
+			</tr>
+		</table>
+		<br>
+		<input type="submit" value="登録" class="btn">
+	</form>
+	<br>
+	<form th:action="@{/case-search-detail}" method="post" th:object="${taskRegistForm}">
+		<input type="hidden" th:field="*{caseId}">
+		<input type="submit" value="戻る" class="btn">
+	</form>
+	<br>
+	<a th:href="@{/top}">トップページに戻る</a>
+</body>
+</html>
