@@ -52,10 +52,22 @@
 	<div th:if="${caseDetail.taskList.size() != 0}">
 		<table class="case-list">
 			<tr>
+				<th>削除</th>
 				<th>タスクID</th><th>タイトル</th><th>期限</th>
 				<th>重要度</th><th>ステータス</th>
 			</tr>
 			<tr th:each="task : ${caseDetail.taskList}">
+				<td>
+					<form th:action="@{/task-remove}" method="post">
+						<input type="hidden" name="caseId" th:value="${task.caseId}">
+						<input type="hidden" name="taskId" th:value="${task.taskId}">
+						<input type="hidden" name="title" th:value="${task.title}">
+						<input type="hidden" name="deadline" th:value="${task.deadline}">
+						<input type="hidden" name="priorityCode" th:value="${task.priority.priorityCode}">
+						<input type="hidden" name="statusCode" th:value="${task.status.statusCode}">
+						<input type="submit" value="削除" class="tbtn">
+					</form>
+				</td>
 				<td th:text="${task.taskId}"></td>
 				<td th:text="${task.title}"></td>
 				<td th:text="${task.deadline}"></td>
