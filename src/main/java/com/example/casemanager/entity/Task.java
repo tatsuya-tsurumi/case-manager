@@ -12,4 +12,6 @@ public class Task {
 	private Date deadline;
 	private Priority priority;
 	private Status status;
+	private String priorityCode;
+	private String statusCode;
 }

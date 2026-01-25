@@ -12,9 +12,11 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.example.casemanager.entity.Priority;
 import com.example.casemanager.entity.Status;
+import com.example.casemanager.entity.Task;
 import com.example.casemanager.form.TaskRegistForm;
 import com.example.casemanager.service.PriorityService;
 import com.example.casemanager.service.StatusService;
+import com.example.casemanager.service.TaskService;
 
 import lombok.RequiredArgsConstructor;
 
@@ -24,6 +26,7 @@ public class TaskRegistController {
 	
 	private final StatusService statusService;
 	private final PriorityService priorityService;
+	private final TaskService taskService;
 	
 	/*-- タスク登録画面表示リクエスト --*/
 	@PostMapping("/task-show-regist")
@@ -84,9 +87,16 @@ public class TaskRegistController {
 			return "task-regist";
 		}
 		
-		// とりあえず表示
-		System.out.println("タスク登録");
-		System.out.println(form);
+		// form → entityへ
+		Task task = new Task();
+		task.setCaseId(form.getCaseId());
+		task.setTitle(form.getTitle());
+		task.setDeadline(form.getDeadline());
+		task.setPriorityCode(form.getPriorityCode());
+		task.setStatusCode(form.getStatusCode());
+		
+		// タスク登録
+		taskService.regist(task);
 		
 		// フラッシュスコープにメッセージを格納して、リダイレクト　
 		redirectAttributes.addFlashAttribute("msg", "タスク登録");
