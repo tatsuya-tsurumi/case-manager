@@ -14,4 +14,7 @@ public interface UserRepository {
 	
 	// 1件検索
 	User selectById(@Param("userId") String userId);
+	
+	// ユーザ登録処理
+	void insert(User user);
 }

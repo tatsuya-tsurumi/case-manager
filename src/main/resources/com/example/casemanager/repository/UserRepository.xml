@@ -12,9 +12,15 @@
 	<!-- 1件検索 -->
 	<select id="selectById"
 			resultType="com.example.casemanager.entity.User">
-		SELECT user_id, user_name
+		SELECT user_id, user_name, password
 			FROM users
 		WHERE user_id = #{userId}
 	</select>
+	
+	<!-- ユーザ登録 -->
+	<insert id="insert">
+		INSERT INTO users (user_id, user_name, password)
+		VALUES (#{userId}, #{userName}, #{password})
+	</insert>
 	
 </mapper>
