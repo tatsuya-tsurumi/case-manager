@@ -68,8 +68,10 @@ public class CaseRegistController {
 		Status status = statusService.findByCode(form.getStatusCode());
 		form.setStatusName(status.getStatusName());
 		
+		
+		System.out.println(form.getUserId());
 		// ユーザ名をformに格納
-		User user = userSerivce.findById(form.getUserId());
+		User user = userSerivce.findByUserId(form.getUserId());
 		form.setUserName(user.getUserName());
 		
 		// 正常な場合、確認画面へ遷移

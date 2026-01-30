@@ -32,10 +32,16 @@ public class UserController {
 	
 	@PostMapping("/user-regist")
 	public String regist(@Validated @ModelAttribute
-			UserRegistForm form, BindingResult result) {
+			UserRegistForm form, BindingResult result,
+			Model model) {
 		
 		if(result.hasErrors()) {
-			return "regist";
+			return "user-regist";
+		}
+		
+		if(!form.getPassword().equals(form.getConfirmPassword())) {
+			model.addAttribute("passwordError", "パスワードが一致しません");
+			return "user-regist";
 		}
 		
 		User user = new User();

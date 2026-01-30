@@ -16,4 +16,5 @@ public class UserRegistForm {
 	
 	@NotBlank
 	private String password;
+	private String confirmPassword;
 }

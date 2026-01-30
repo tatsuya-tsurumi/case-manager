@@ -17,6 +17,14 @@
 		WHERE email = #{email}
 	</select>
 	
+	<!-- 1件検索 -->
+	<select id="selectByUserId"
+			resultType="com.example.casemanager.entity.User">
+		SELECT user_id, user_name
+			FROM users
+		WHERE user_id = #{userId}
+	</select>
+	
 	<!-- ユーザ登録 -->
 	<insert id="insert">
 		INSERT INTO users (email, user_name, password)

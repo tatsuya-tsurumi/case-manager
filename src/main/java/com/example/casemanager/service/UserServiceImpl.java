@@ -44,6 +44,12 @@ public class UserServiceImpl implements UserService {
 		);
 		userRepository.insert(user);
 	}
+
+	@Override
+	public User findByUserId(String userId) {
+		User user = userRepository.selectByUserId(userId);
+		return user;
+	}
 	
 	
 
