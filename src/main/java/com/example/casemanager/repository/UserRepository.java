@@ -17,4 +17,6 @@ public interface UserRepository {
 	
 	// ユーザ登録処理
 	void insert(User user);
+
+	User selectByEmail(String email);
 }

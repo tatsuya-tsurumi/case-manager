@@ -12,4 +12,7 @@ public interface UserService {
 	// 1件検索
 	User findById(String userId);
 	
+	// ユーザ登録
+	void regist(User user);
+	
 }

@@ -12,15 +12,24 @@
 	<!-- 1件検索 -->
 	<select id="selectById"
 			resultType="com.example.casemanager.entity.User">
-		SELECT user_id, user_name, password
+		SELECT user_id, email, user_name, password
 			FROM users
-		WHERE user_id = #{userId}
+		WHERE email = #{email}
 	</select>
 	
 	<!-- ユーザ登録 -->
 	<insert id="insert">
-		INSERT INTO users (user_id, user_name, password)
-		VALUES (#{userId}, #{userName}, #{password})
+		INSERT INTO users (email, user_name, password)
+		VALUES (#{email}, #{userName}, #{password})
 	</insert>
+	
+	<!-- ログイン処理 -->
+	<select id="selectByEmail"
+			resultType="com.example.casemanager.entity.User">
+		SELECT
+			user_id, email, user_name, password
+		FROM users
+		WHERE email = #{email}
+	</select>
 	
 </mapper>

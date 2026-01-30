@@ -2,6 +2,7 @@ package com.example.casemanager.service;
 
 import java.util.List;
 
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -15,6 +16,7 @@ import lombok.RequiredArgsConstructor;
 public class UserServiceImpl implements UserService {
 	
 	private final UserRepository userRepository;
+	private final PasswordEncoder passwordEncorder;
 	
 	@Override
 	@Transactional(readOnly=true)
@@ -33,5 +35,16 @@ public class UserServiceImpl implements UserService {
 		
 		return user;
 	}
+
+	@Override
+	public void regist(User user) {
+		
+		user.setPassword(
+			passwordEncorder.encode(user.getPassword())
+		);
+		userRepository.insert(user);
+	}
+	
+	
 
 }

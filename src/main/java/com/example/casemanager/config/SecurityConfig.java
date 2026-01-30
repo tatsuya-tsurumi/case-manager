@@ -10,34 +10,42 @@ import org.springframework.security.web.SecurityFilterChain;
 
 import lombok.RequiredArgsConstructor;
 
+
+
 @Configuration
 @EnableWebSecurity
 @RequiredArgsConstructor
 public class SecurityConfig {
-	
-	@Bean
-	SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-		
-		http
-			.csrf(csrf -> csrf.disable())
-			.authorizeHttpRequests(auth -> auth
-					.requestMatchers("/login", "/register", "/css/**").permitAll()
-					.anyRequest().authenticated()
-			)
-			.formLogin(login -> login
-					.loginPage("/login")
-					.defaultSuccessUrl("/top", true)
-					.permitAll()
-			)
-			.logout(logout -> logout
-					.logoutSuccessUrl("/login?logout")
-			);
-		
-		return http.build();
-	}
-	
-	@Bean
-	PasswordEncoder passwordEncoder() {
-		return new BCryptPasswordEncoder();
-	}
+
+
+    @Bean
+    SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+
+        http
+            .csrf(csrf -> csrf.disable())
+            .authorizeHttpRequests(auth -> auth
+                .requestMatchers("/login", "/user-regist", "/css/**").permitAll()
+                .anyRequest().authenticated()
+            )
+            .formLogin(login -> login
+                .loginPage("/login")
+                .loginProcessingUrl("/login")
+                .usernameParameter("email")
+                .passwordParameter("password")
+                .defaultSuccessUrl("/top", true)
+                .failureUrl("/login?error")
+                .permitAll()
+            )
+            .logout(logout -> logout
+            	.logoutUrl("/logout")
+                .logoutSuccessUrl("/login?logout")
+            );
+
+        return http.build();
+    }
+
+    @Bean
+    PasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
+    }
 }

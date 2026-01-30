@@ -76,7 +76,6 @@ public class CaseSearchController {
 		if(!form.getStatusCode().equals("")) {
 			cases.setStatusCode(form.getStatusCode());
 		}
-		System.out.println(cases);
 		
 		// 条件検索
 		List<CaseSummary> list = caseService.findListByConditions(cases);
