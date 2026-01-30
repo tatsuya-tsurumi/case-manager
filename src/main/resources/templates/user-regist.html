@@ -1,13 +1,14 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{base}">
 
 <head>
-	<meta charset="UTF-8">
-	<title>ユーザ登録</title>
-	<link rel="stylesheet" th:href="@{/css/style.css}">
+    <title>ユーザ登録</title>
 </head>
 
 <body>
+	<main layout:fragment="content">
 	<h2>ユーザ登録</h2>
 
 	<form th:action="@{/user-regist}" method="post" th:object="${userRegistForm}">
@@ -31,7 +32,7 @@
 		<br>
 		<input type="submit" value="ユーザ登録" class="btn">
 	</form>
-
+	</main>
 </body>
 
 </html>

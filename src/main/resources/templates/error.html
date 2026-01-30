@@ -1,17 +1,19 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{base}">
 
 <head>
-	<meta charset="UTF-8">
-	<title>エラー</title>
-	<link rel="stylesheet" th:href="@{/css/style.css}">
+    <title>エラー</title>
 </head>
 <body>
+	<main layout:fragment="content">
 	<h2>エラー</h2>
 	<br>
 	<p class="error-msg">エラーが発生しました</p>
 	<p class="error-msg" th:text="${status} + ' ' + ${error}"></p>
 	<br>
 	<a th:href="@{/top}">トップページに戻る</a>
+	</main>
 </body>
 </html>

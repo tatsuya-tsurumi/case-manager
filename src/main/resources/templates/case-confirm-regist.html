@@ -1,12 +1,13 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{base}">
 
 <head>
-	<meta charset="UTF-8">
-	<title>ケース登録確認</title>
-	<link rel="stylesheet" th:href="@{/css/style.css}">
+    <title>ケース登録確認</title>
 </head>
 <body>
+	<main layout:fragment="content">
 	<h2>ケース登録確認</h2>
 
 	<table class="detail-table"　th:object="${caseRegistForm}">
@@ -48,6 +49,7 @@
 		<input type="hidden" th:field="*{statusCode}">
 		<input type="submit" value="戻る" class="btn">
 	</form>
+	</main>
 </body>
 
 </html>

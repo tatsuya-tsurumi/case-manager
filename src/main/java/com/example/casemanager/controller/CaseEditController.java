@@ -69,7 +69,7 @@ public class CaseEditController {
 		form.setStatusName(status.getStatusName());
 		
 		// ユーザ名をformに格納
-		User user = userSerivce.findById(form.getUserId());
+		User user = userSerivce.findByUserId(form.getUserId());
 		form.setUserName(user.getUserName());
 		
 		// 正常な場合、確認画面へ遷移

@@ -1,11 +1,13 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{base}">
+
 <head>
-<meta charset="UTF-8">
-<title>完了</title>
-<link rel="stylesheet" th:href="@{/css/style.css}">
+    <title>完了</title>
 </head>
 <body>
+	<main layout:fragment="content">
 	<h2>完了</h2>
 	
 	<br>
@@ -19,6 +21,6 @@
 	</form>
 	<br>
 	<a th:href="@{/top}">トップページに戻る</a>
-	
+	</main>
 </body>
 </html>
