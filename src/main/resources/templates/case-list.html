@@ -9,19 +9,17 @@
 <body>
 	<main layout:fragment="content">
 		<br>
-		<!-- 登録へ -->
-		<form th:action="@{/case-show-regist}" method="post">
-			<input type="submit" value="ケース登録" class="btn">
-		</form>
-		<br>
-		<!-- ログアウト -->
-		<form th:action="@{/logout}" method="post">
-			<input type="submit" value="ログアウト" class="btn">
-		</form>
-		<h2>ケース検索</h2>
+		<div class="d-flex justify-content-between w-50 mx-auto">
+			<!-- 登録へ -->
+			<form th:action="@{/case-show-regist}" method="post">
+				<input type="submit" value="ケース登録" class="btn btn-primary">
+			</form>
+			<br>
+		</div>
+		<h2 class="my-5">ケース検索</h2>
 		<!-- 検索 -->
-		<form th:action="@{/case-search-list}" method="post" th:object="${caseSearchListForm}">
-			<table class="condition-table">
+		<form th:action="@{/case-search-list}" method="post" th:object="${caseSearchListForm}" class="w-75 mx-auto">
+			<table class="table table-bordered">
 				<tr>
 					<th>【担当者】</th>
 					<th>【ケース名】</th>
@@ -49,39 +47,38 @@
 					</td>
 				</tr>
 			</table>
-			<br>
-			<input type="submit" value="検索" class="btn">
+			<input type="submit" value="検索" class="btn btn-primary">
 		</form>
 
 		<!-- 表示 -->
-		<div th:if="${caseSummaryList} != null">
-			<h2>ケース一覧</h2>
+		<div th:if="${caseSummaryList} != null" class="w-75 mx-auto">
+			<h2 class="my-4">ケース一覧</h2>
 
-			<table class="case-list">
+			<table class="table table-bordered table-fixed">
 				<tr>
-					<th>詳細</th>
-					<th>ケースID</th>
-					<th>担当者</th>
-					<th>ケース名</th>
-					<th>クライアント名</th>
-					<th>ステータス</th>
-					<th>詳細</th>
-					<th>タスク件数</th>
+					<th class="nowrap">詳細</th>
+					<th class="nowrap">ケースID</th>
+					<th class="nowrap">担当者</th>
+					<th class="nowrap">ケース名</th>
+					<th class="nowrap">クライアント名</th>
+					<th class="nowrap">ステータス</th>
+					<th>内容</th>
+					<th class="nowrap">タスク件数</th>
 				</tr>
 				<tr th:each="case : ${caseSummaryList}">
-					<td>
+					<td class="align-middle">
 						<form th:action="@{/case-search-detail}" method="post">
 							<input type="hidden" name="caseId" th:value="${case.caseId}">
 							<input type="submit" value="詳細" class="tbtn">
 						</form>
 					</td>
-					<td th:text="${case.caseId}"></td>
-					<td th:text="${case.user.userName}"></td>
-					<td th:text="${case.caseName}"></td>
-					<td th:text="${case.clientName}"></td>
-					<td th:text="${case.status.statusCode + ':' + case.status.statusName}"></td>
-					<td th:text="${case.detail}"></td>
-					<td th:text="${case.taskCnt}"></td>
+					<td th:text="${case.caseId}" class="nowrap align-middle"></td>
+					<td th:text="${case.user.userName}" class="nowrap align-middle"></td>
+					<td th:text="${case.caseName}" class="nowrap align-middle"></td>
+					<td th:text="${case.clientName}" class="nowrap align-middle"></td>
+					<td th:text="${case.status.statusName}" class="nowrap align-middle"></td>
+					<td th:text="${case.detail}" class="align-middle text-start"></td>
+					<td th:text="${case.taskCnt}" class="nowrap align-middle"></td>
 				</tr>
 			</table>
 

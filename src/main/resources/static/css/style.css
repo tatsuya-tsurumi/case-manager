@@ -6,39 +6,12 @@ body {
 	text-align: center;
 }
 
-h1 {
-	font-size: 32px;
-    color: #000;
-}
-
-h2 {
-	font-size: 28px;
-	background-color: #A4C6FF;
-	padding-top: 6px;
-	padding-bottom: 6px;
-}
-
-/* 通常のボタン */
-.btn {
-	border: 2px solid #000;
-	padding: 4px 20px;
-	font-size: 20px;
-	color: #000;
-	cursor:pointer;
-}
-
-.btn:hover {
-  color: #fff;
-  background: #A4C6FF;
-  border: 2px solid #A4C6FF;
-}
-
 table {
 	border: 1px solid #5e696c;
 	margin-left: auto;
 	margin-right: auto;
-	width: 80%; 					/* テーブル横幅 */
-	border-collapse:  collapse; 	/* 境界線を共有 */
+	width: 80%; 					
+	border-collapse:  collapse; 	
 }
 
 th {
@@ -63,12 +36,6 @@ td {
 	background-color: #eee8aa;
 	width: 50%;
 	table-layout: fixed;
-}
-
-.detail-table .guide {
-	width: 30%;
-	background-color: #CCCCCC	;
-	text-align: center;
 }
 
 .detail-table td {
@@ -113,5 +80,11 @@ input.long {
 .task-list {
 	background-color: #afeeee;
 	width: 60%;
+}
+
+.nowrap {
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
 }
 
