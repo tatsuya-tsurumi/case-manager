@@ -8,21 +8,21 @@
 </head>
 <body>
 	<main layout:fragment="content">
-	<h2>ケース編集</h2>
+	<h2 class="my-5">ケース編集</h2>
 	
-	<form th:action="@{/case-edit}" method="post" th:object="${caseEditForm}">
-		<table class="detail-table">
+	<form th:action="@{/case-edit}" method="post" th:object="${caseEditForm}" class="w-75 mx-auto">
+		<table class="table table-bordered">
 			<tr>
-				<td class="guide">【ケースID】</td>
-				<td>
+				<td>【ケースID】</td>
+				<td class="text-start">
 					<span th:text="*{caseId}"></span>
 					<input type="hidden" th:field="*{caseId}">
 				</td>
 			</tr>
 			<tr>
-				<td class="guide">【ユーザ名】</td>
-				<td>
-					<select th:field="*{userId}">
+				<td>【ユーザ名】</td>
+				<td class="text-start">
+					<select th:field="*{userId}" class="w-50">
 						<option th:each="user : ${userList}"
 						th:value="${user.userId}"
 						th:text="${user.userName}"
@@ -33,30 +33,30 @@
 					class="error-msg"></div>
 				</td>
 			<tr>
-				<td class="guide">【ケース名】</td>
-				<td>
-					<input type="text" th:field="*{caseName}"><br>
+				<td>【ケース名】</td>
+				<td class="text-start">
+					<input type="text" th:field="*{caseName}" class="w-75"><br>
 					<div th:if="${#fields.hasErrors('caseName')}" th:errors="*{caseName}"
 					class="error-msg"></div>
 				</td>
 			<tr>
-				<td class="guide">【クライアント名】</td>
-				<td>
-					<input type="text" th:field="*{clientName}"><br>
+				<td>【クライアント名】</td>
+				<td class="text-start">
+					<input type="text" th:field="*{clientName}" class="w-75"><br>
 					<div th:if="${#fields.hasErrors('clientName')}" th:errors="*{clientName}"
 					class="error-msg"></div>
 				</td>
 			<tr>
-				<td class="guide">【詳細】</td>
-				<td>
-					<textarea th:field="*{detail}" class="long" rows="3"></textarea><br>
+				<td>【詳細】</td>
+				<td class="text-start">
+					<textarea th:field="*{detail}" class="w-100" rows="3"></textarea><br>
 					<div th:if="${#fields.hasErrors('detail')}" th:errors="*{detail}"
 					class="error-msg"></div>
 				</td>
 			<tr>
 				<td class="guide">【ステータス名】</td>
-				<td>
-					<select th:field="*{statusCode}">
+				<td class="text-start">
+					<select th:field="*{statusCode}" class="w-50">
 						<option th:each="status : ${statusList}"
 						th:value="${status.statusCode}"
 						th:text="${status.statusName}"
@@ -69,7 +69,7 @@
 			</tr>
 		</table>
 		<br>
-		<input type="submit" value="更新" class="btn">
+		<input type="submit" value="更新" class="btn btn-primary">
 		<br>
 		<br>
 		<a th:href="@{/top}">トップページに戻る</a>

@@ -9,7 +9,7 @@
 <body>
 	<main layout:fragment="content">
 		<br>
-		<div class="d-flex justify-content-between w-50 mx-auto">
+		<div class="w-50 mx-auto">
 			<!-- 登録へ -->
 			<form th:action="@{/case-show-regist}" method="post">
 				<input type="submit" value="ケース登録" class="btn btn-primary">
@@ -21,10 +21,10 @@
 		<form th:action="@{/case-search-list}" method="post" th:object="${caseSearchListForm}" class="w-75 mx-auto">
 			<table class="table table-bordered">
 				<tr>
-					<th>【担当者】</th>
-					<th>【ケース名】</th>
-					<th>【クライアント名】</th>
-					<th>【ステータス】</th>
+					<th class="bg-dark-subtle">【担当者】</th>
+					<th class="bg-dark-subtle">【ケース名】</th>
+					<th class="bg-dark-subtle">【クライアント名】</th>
+					<th class="bg-dark-subtle">【ステータス】</th>
 				</tr>
 				<tr>
 					<td>
@@ -51,19 +51,19 @@
 		</form>
 
 		<!-- 表示 -->
-		<div th:if="${caseSummaryList} != null" class="w-75 mx-auto">
+		<div th:if="${caseSummaryList} != null" class="w-75 mx-auto pb-3">
 			<h2 class="my-4">ケース一覧</h2>
 
 			<table class="table table-bordered table-fixed">
 				<tr>
-					<th class="nowrap">詳細</th>
-					<th class="nowrap">ケースID</th>
-					<th class="nowrap">担当者</th>
-					<th class="nowrap">ケース名</th>
-					<th class="nowrap">クライアント名</th>
-					<th class="nowrap">ステータス</th>
-					<th>内容</th>
-					<th class="nowrap">タスク件数</th>
+					<th class="nowrap bg-dark-subtle">詳細</th>
+					<th class="nowrap bg-dark-subtle">ケースID</th>
+					<th class="nowrap bg-dark-subtle">担当者</th>
+					<th class="nowrap bg-dark-subtle">ケース名</th>
+					<th class="nowrap bg-dark-subtle">クライアント名</th>
+					<th class="nowrap bg-dark-subtle">ステータス</th>
+					<th class="bg-dark-subtle">内容</th>
+					<th class="nowrap bg-dark-subtle">タスク件数</th>
 				</tr>
 				<tr th:each="case : ${caseSummaryList}">
 					<td class="align-middle">

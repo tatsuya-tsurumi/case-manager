@@ -8,24 +8,24 @@
 </head>
 <body>
 	<main layout:fragment="content">
-	<h2>ケース登録確認</h2>
+	<h2 class="my-5">ケース登録確認</h2>
 
-	<table class="detail-table"　th:object="${caseRegistForm}">
+	<table th:object="${caseRegistForm}" class="table table-bordered w-50 mx-auto">
 		<tr>
-			<td class="guide">【ユーザ名】</td>
-			<td th:text="*{userName}"></td>
+			<td >【ユーザ名】</td>
+			<td th:text="*{userName}" class="w-50"></td>
 		<tr>
-			<td class="guide">【ケース名】</td>
-			<td th:text="*{caseName}"></td>
+			<td >【ケース名】</td>
+			<td th:text="*{caseName}" class="w-50"></td>
 		<tr>
-			<td class="guide">【クライアント名】</td>
-			<td th:text="*{clientName}"></td>
+			<td >【クライアント名】</td>
+			<td th:text="*{clientName}" class="w-50"></td>
 		<tr>
-			<td class="guide">【詳細】</td>
-			<td th:text="*{detail}" class="long"></td>
+			<td >【詳細】</td>
+			<td th:text="*{detail}" class="w-50"></td>
 		<tr>
-			<td class="guide">【ステータス】</td>
-			<td th:text="*{statusName}"></td>
+			<td >【ステータス】</td>
+			<td th:text="*{statusName}" class="w-50"></td>
 		</tr>
 	</table>
 	<br>
@@ -37,7 +37,7 @@
 		<input type="hidden" th:field="*{clientName}">
 		<input type="hidden" th:field="*{detail}">
 		<input type="hidden" th:field="*{statusCode}">
-		<input type="submit" value="登録実行" class="btn">
+		<input type="submit" value="登録実行" class="btn btn-primary">
 	</form>
 	<br>
 	<form th:action="@{/case-show-regist}" method="post"
@@ -47,7 +47,7 @@
 		<input type="hidden" th:field="*{clientName}">
 		<input type="hidden" th:field="*{detail}">
 		<input type="hidden" th:field="*{statusCode}">
-		<input type="submit" value="戻る" class="btn">
+		<input type="submit" value="戻る" class="btn btn-primary">
 	</form>
 	</main>
 </body>

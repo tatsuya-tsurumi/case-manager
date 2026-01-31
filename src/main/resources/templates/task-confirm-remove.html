@@ -8,30 +8,30 @@
 </head>
 <body>
 	<main layout:fragment="content">
-	<h2>タスク削除確認</h2>
+	<h2 class="my-5">タスク削除確認</h2>
 
-	<table class="detail-table"　th:object="${taskRemoveForm}">
+	<table th:object="${taskRemoveForm}" class="table table-bordered w-50 mx-auto">
 		<tr>			
-			<td class="guide">【タスクID】</td>
-			<td th:text="*{taskId}"></td>
+			<td>【タスクID】</td>
+			<td th:text="*{taskId}" class="w-50"></td>
 		</tr>
 		<tr>			
-			<td class="guide">【ケースID】</td>
-			<td th:text="*{caseId}"></td>
+			<td>【ケースID】</td>
+			<td th:text="*{caseId}" class="w-50"></td>
 		</tr>
 		<tr>
-			<td class="guide">【タイトル】</td>
-			<td th:text="*{title}"></td>
+			<td>【タイトル】</td>
+			<td th:text="*{title}" class="w-50"></td>
 		<tr>
-			<td class="guide">【期限】</td>
-			<td th:text="*{deadline}"></td>
+			<td>【期限】</td>
+			<td th:text="*{deadline}" class="w-50"></td>
 		<tr>
-			<td class="guide">【重要度】</td>
-			<td th:text="*{priorityName}"></td>
+			<td>【重要度】</td>
+			<td th:text="*{priorityName}" class="w-50"></td>
 		</tr>
 		<tr>
-			<td class="guide">【ステータス】</td>
-			<td th:text="*{statusName}"></td>
+			<td>【ステータス】</td>
+			<td th:text="*{statusName}" class="w-50"></td>
 		</tr>
 	</table>
 	<br>
@@ -44,13 +44,13 @@
 		<input type="hidden" th:field="*{deadline}">
 		<input type="hidden" th:field="*{priorityCode}">
 		<input type="hidden" th:field="*{statusCode}">
-		<input type="submit" value="削除実行" class="btn">
+		<input type="submit" value="削除実行" class="btn btn-primary">
 	</form>
 	<br>
 	<form th:action="@{/case-search-detail}" method="post"
 			th:object="${taskRemoveForm}">
 		<input type="hidden" th:field="*{caseId}">
-		<input type="submit" value="戻る" class="btn">
+		<input type="submit" value="戻る" class="btn btn-primary">
 	</form>
 	</main>
 </body>

@@ -8,31 +8,31 @@
 </head>
 <body>
 	<main layout:fragment="content">
-	<h2>ケース詳細</h2>
+	<h2 class="my-5">ケース詳細</h2>
 	<!-- ケース詳細 -->
-	<table class="detail-table" th:object="${caseDetail}">
+	<table class="table table-bordered w-50 mx-auto" th:object="${caseDetail}">
 		<tr>
-			<td class="guide">【ケースID】</td>
+			<td >【ケースID】</td>
 			<td th:text="*{caseId}"></td>
 		</tr>
 		<tr>
-			<td class="guide">【ユーザ】</td>
+			<td >【ユーザ】</td>
 			<td th:text="*{user.userName}"></td>
 		</tr>
 		<tr>
-			<td class="guide">【ケース名】</td>
+			<td >【ケース名】</td>
 			<td th:text="*{caseName}"></td>
 		</tr>
 		<tr>
-			<td class="guide">【クライアント名】</td>
+			<td >【クライアント名】</td>
 			<td th:text="*{clientName}"></td>
 		</tr>
 		<tr>
-			<td class="guide">【詳細】</td>
+			<td >【詳細】</td>
 			<td th:text="*{detail}"></td>
 		</tr>
 		<tr>
-			<td class="guide">【ステータス】</td>
+			<td >【ステータス】</td>
 			<td th:text="*{status.statusName}"></td>
 		</tr>
 	</table>
@@ -44,25 +44,28 @@
 		<input type="hidden" th:field="*{clientName}">
 		<input type="hidden" th:field="*{detail}">
 		<input type="hidden" name="statusCode" th:value="status.statusCode">
-		<input type="submit" value="編集" class="btn">
+		<input type="submit" value="編集" class="btn btn-primary">
 	</form>
 	<br>
 	<form th:action="@{/case-remove}" method="post" th:object="${caseDetail}">
 		<input type="hidden" th:field="*{caseId}">
-		<input type="submit" value="削除" class="btn">
+		<input type="submit" value="削除" class="btn btn-primary">
 	</form>
-	<div th:if="${caseDetail.taskList.size()} != 0">
+	<div th:if="${caseDetail.taskList.size()} != 0" class="mt-1">
 		(タスクは全て削除)
 	</div>
 	<br><br>
 	
 	<!-- タスク一覧 -->
 	<div th:if="${caseDetail.taskList.size() != 0}">
-		<table class="case-list">
+		<table class="table table-bordered w-75 mx-auto">
 			<tr>
-				<th>削除</th>
-				<th>タスクID</th><th>タイトル</th><th>期限</th>
-				<th>重要度</th><th>ステータス</th>
+				<th class="bg-dark-subtle">削除</th>
+				<th class="bg-dark-subtle">タスクID</th>
+				<th class="bg-dark-subtle">タイトル</th>
+				<th class="bg-dark-subtle">期限</th>
+				<th class="bg-dark-subtle">重要度</th>
+				<th class="bg-dark-subtle">ステータス</th>
 			</tr>
 			<tr th:each="task : ${caseDetail.taskList}">
 				<td>
@@ -85,14 +88,15 @@
 		</table>
 	</div>
 	<br>
+	<div class="pb-3">		
 	<!-- タスク登録へ -->
 	<form th:action="@{/task-show-regist}" method="post" th:object="${caseDetail}">
 		<input type="hidden" th:field="*{caseId}">
-		<input type="submit" value="タスク登録" class="btn">
+		<input type="submit" value="タスク登録" class="btn btn-primary">
 	</form>
 	<br>
-	<br>
 	<a th:href="@{/top}">トップページに戻る</a>
+	</div>
 	</main>
 </body>
 </html>
