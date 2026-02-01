@@ -6,64 +6,14 @@ body {
 	text-align: center;
 }
 
-table {
-	border: 1px solid #5e696c;
-	margin-left: auto;
-	margin-right: auto;
-	width: 80%; 					
-	border-collapse:  collapse; 	
-}
-
-th {
-	border: 1px solid #5e696c;
-    text-align:center;
-    background-color: #A4C6FF;
-    height: 32px;
-}
-
-td {
-	border: 1px solid #5e696c;
-	text-align: center;
-	height: 24px;
-}
-
 .case-list {
     background-color: #eee8aa;
-}
-
-/* 詳細テーブル */
-.detail-table {
-	background-color: #eee8aa;
-	width: 50%;
-	table-layout: fixed;
-}
-
-.detail-table td {
-	text-align: left;
-}
-
-.detail-table td input {
-  width: 50%;
-  margin-left: 4px;
-}
-
-.detail-table td textarea {
-  width: 80%;
-  margin-left: 4px;
-}
-
-/* 長い入力の幅  */
-input.long {
-	width: 300px;
 }
 
 .error-msg {
 	color: red;
 }
 
-.condition_table {
-	background-color: red;
-}
 .tbtn {
 	border: 2px solid steelblue;
 	padding: 2px 10px;

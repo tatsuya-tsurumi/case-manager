@@ -48,7 +48,6 @@
 
 			<table class="table table-bordered table-fixed">
 				<tr>
-					<th class="nowrap bg-dark-subtle">詳細</th>
 					<th class="nowrap bg-dark-subtle">ケースID</th>
 					<th class="nowrap bg-dark-subtle">担当者</th>
 					<th class="nowrap bg-dark-subtle">ケース名</th>
@@ -58,13 +57,13 @@
 					<th class="nowrap bg-dark-subtle">タスク件数</th>
 				</tr>
 				<tr th:each="case : ${caseSummaryList}">
-					<td class="align-middle">
+					<td class="nowrap align-middle">
 						<form th:action="@{/case-search-detail}" method="post">
 							<input type="hidden" name="caseId" th:value="${case.caseId}">
-							<input type="submit" value="詳細" class="tbtn">
+							<input type="submit" th:value="${case.caseId}" 
+								class="btn btn-link p-0 border-0 text-decoration-none">
 						</form>
 					</td>
-					<td th:text="${case.caseId}" class="nowrap align-middle"></td>
 					<td th:text="${case.user.userName}" class="nowrap align-middle"></td>
 					<td th:text="${case.caseName}" class="nowrap align-middle"></td>
 					<td th:text="${case.clientName}" class="nowrap align-middle"></td>

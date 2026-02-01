@@ -71,7 +71,7 @@
 				<th class="bg-dark-subtle">ステータス</th>
 			</tr>
 			<tr th:each="task : ${caseDetail.taskList}">
-				<td>
+				<td class="btn-outline-dark">
 					<form th:action="@{/task-remove}" method="post">
 						<input type="hidden" name="caseId" th:value="${task.caseId}">
 						<input type="hidden" name="taskId" th:value="${task.taskId}">
