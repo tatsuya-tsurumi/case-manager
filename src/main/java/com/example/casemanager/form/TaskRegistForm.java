@@ -16,10 +16,12 @@ public class TaskRegistForm {
 	private Date deadline;
 	
 	@NotNull(message = "重要度を選択してください")
+	@Size(min=1, message="重要度を選択してください")
 	private String priorityCode;
 	private String priorityName;
 	
 	@NotNull(message = "ステータスを選択してください")
+	@Size(min=1, message="ステータスを選択してください")
 	private String statusCode;
 	private String statusName;
 }

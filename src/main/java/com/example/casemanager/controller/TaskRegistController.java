@@ -52,7 +52,7 @@ public class TaskRegistController {
 		
 		// 入力エラーがある場合、ケース登録画面に戻す
 		if(result.hasErrors()) {
-			
+						
 			// ステータスリストを取得し、モデルに格納
 			List<Status> list = statusService.findAll();
 			model.addAttribute("statusList",list);

@@ -70,13 +70,12 @@
 	<br>
 	<div class="pb-3">		
 	<form th:action="@{/case-confirm-remove}" method="post"
-			th:object="${caseDetail}">
+			th:object="${caseDetail}" class="d-inline">
 		<input type="hidden" th:field="*{caseId}">
 		<input type="submit" value="削除実行" class="btn btn-primary">
 	</form>
-	<br>
 	<form th:action="@{/case-search-detail}" method="post"
-			th:object="${caseDetail}">
+			th:object="${caseDetail}" class="d-inline ms-5">
 		<input type="hidden" th:field="*{caseId}">
 		<input type="submit" value="戻る" class="btn btn-primary">
 	</form>

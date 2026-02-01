@@ -43,7 +43,7 @@
 			</div>
 			<div class="mt-3">
 				<label class="form-label">【内容】</label><br>
-				<textarea th:field="*{detail}" rows="3" class="w-100"></textarea><br>
+				<textarea th:field="*{detail}" rows="3" class="w-50"></textarea><br>
 				<div th:if="${#fields.hasErrors('detail')}" th:errors="*{detail}" class="error-msg"></div>
 			</div>
 

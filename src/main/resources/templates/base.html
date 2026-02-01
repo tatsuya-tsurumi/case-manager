@@ -1,8 +1,6 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" 
-	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-	  xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
-	  >
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
 <head>
 	<meta charset="UTF-8">
@@ -18,23 +16,24 @@
 		<div class="container d-flex justify-content-between align-items-center">
 			<h1>CaseManager</h1>
 			<div>
-			<!-- 未ログイン時 -->
-			<div sec:authorize="isAnonymous()">
-				<a th:href="@{/user-regist}" class="btn btn-outline-primary">ユーザ登録</a>
-				<a th:href="@{/login}" class="btn btn-outline-primary ms-4">ログイン</a>
+				<!-- 未ログイン時 -->
+				<div sec:authorize="isAnonymous()">
+					<a th:href="@{/user-regist}" class="btn btn-outline-primary">ユーザ登録</a>
+					<a th:href="@{/login}" class="btn btn-outline-primary ms-4">ログイン</a>
+				</div>
+
+				<!-- ログイン時 -->
+				<div sec:authorize="isAuthenticated()" class="d-flex">
+					<!-- 登録へ -->
+					<form th:action="@{/case-show-regist}" method="post">
+						<input type="submit" value="ケース登録" class="btn btn-outline-primary">
+					</form>
+					<form th:action="@{/logout}" method="post" class="d-inline">
+						<input type="submit" value="ログアウト" class="btn btn-outline-danger ms-5">
+					</form>
+				</div>
 			</div>
 
-			<!-- ログイン時 -->
-			<div sec:authorize="isAuthenticated()">
-
-				<form th:action="@{/logout}" method="post" class="d-inline">
-					<button type="submit" class="btn btn-outline-danger btn-sm">
-						ログアウト
-					</button>
-				</form>
-			</div>
-		</div>
-	
 		</div>
 	</header>
 

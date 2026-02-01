@@ -8,14 +8,6 @@
 
 <body>
 	<main layout:fragment="content">
-		<br>
-		<div class="w-50 mx-auto">
-			<!-- 登録へ -->
-			<form th:action="@{/case-show-regist}" method="post">
-				<input type="submit" value="ケース登録" class="btn btn-primary">
-			</form>
-			<br>
-		</div>
 		<h2 class="my-5">ケース検索</h2>
 		<!-- 検索 -->
 		<form th:action="@{/case-search-list}" method="post" th:object="${caseSearchListForm}" class="w-75 mx-auto">
