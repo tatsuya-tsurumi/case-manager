@@ -33,8 +33,12 @@ body {
 }
 
 .nowrap {
-	white-space: nowrap;
 	overflow: hidden;
 	text-overflow: ellipsis;
+}
+
+.content-col {
+  min-width: 56px;
+  word-break: break-word;
 }
 
