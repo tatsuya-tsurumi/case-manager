@@ -1,37 +1,40 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org"
-      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      layout:decorate="~{base}">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{base}">
 
 <head>
-    <title>ユーザ登録</title>
+	<title>ユーザ登録</title>
 </head>
 
 <body>
 	<main layout:fragment="content">
-	<h2 class="mt-5">ユーザ登録</h2>
+		<h2 class="mt-5">ユーザ登録</h2>
 
-	<form th:action="@{/user-regist}" method="post" th:object="${userRegistForm}" class="w-25 mx-auto">
-		<div class="mt-3">
-			<label class="form-label">メールアドレス</label>
-			<input type="email" th:field="*{email}" class="form-control">
-		</div>
-		<div class="mt-3">
-			<label class="form-label">ユーザ名</label>
-			<input type="text" th:field="*{userName}" class="form-control">
-		</div>
-		<div class="mt-3">
-			<label class="form-label">パスワード</label>
-			<input type="password" th:field="*{password}" class="form-control">
-		</div>
-		<div class="mt-3">
-			<label class="form-label">パスワード（確認）</label>
-			<input type="password" th:field="*{confirmPassword}" class="form-control">
-		</div>
-		<p th:if="${passwordError}" th:text="${passwordError}" class="text-danger mt-3"></p>
-		<br>
-		<input type="submit" value="ユーザ登録" class="btn btn-primary">
-	</form>
+		<form th:action="@{/user-regist}" method="post" th:object="${userRegistForm}" class="w-25 mx-auto">
+			<div class="mt-3">
+				<label class="form-label">メールアドレス</label>
+				<input type="email" th:field="*{email}" class="form-control">
+				<div th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="text-danger small"></div>
+			</div>
+			<div class="mt-3">
+				<label class="form-label">ユーザ名</label>
+				<input type="text" th:field="*{userName}" class="form-control">
+				<div th:if="${#fields.hasErrors('userName')}" th:errors="*{userName}" class="text-danger small"></div>
+			</div>
+			<div class="mt-3">
+				<label class="form-label">パスワード</label>
+				<input type="password" th:field="*{password}" class="form-control">
+				<div th:if="${#fields.hasErrors('password')}" th:errors="*{password}" class="text-danger small"></div>
+			</div>
+			<div class="mt-3">
+				<label class="form-label">パスワード（確認）</label>
+				<input type="password" th:field="*{confirmPassword}" class="form-control">
+				<div th:if="${#fields.hasErrors('password')}" th:errors="*{password}" class="text-danger small"></div>
+			</div>
+			<p th:if="${passwordError}" th:text="${passwordError}" class="text-danger mt-3"></p>
+			<br>
+			<input type="submit" value="ユーザ登録" class="btn btn-primary">
+		</form>
 	</main>
 </body>
 

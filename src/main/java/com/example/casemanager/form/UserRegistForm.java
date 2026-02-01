@@ -7,14 +7,16 @@ import lombok.Data;
 @Data
 public class UserRegistForm {
 	
-	@NotBlank
-	@Email
+	@NotBlank(message = "メールアドレスは必須です")
+	@Email(message = "メールアドレスの形式が正しくありません")
 	private String email;
 	
-	@NotBlank
+	@NotBlank(message = "ユーザ名は必須です")
 	private String userName;
 	
-	@NotBlank
+	@NotBlank(message = "パスワードは必須です")
 	private String password;
+	
+	@NotBlank(message = "確認用パスワードは必須です")
 	private String confirmPassword;
 }
