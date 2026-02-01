@@ -37,7 +37,8 @@
 		</tr>
 	</table>
 	<br>
-	<form th:action="@{/case-show-edit}" method="post" th:object="${caseDetail}">
+	<form th:action="@{/case-show-edit}" method="post" th:object="${caseDetail}"
+			class="d-inline">
 		<input type="hidden" th:field="*{caseId}">
 		<input type="hidden" name="userId" th:value="user.userId">
 		<input type="hidden" th:field="*{caseName}">
@@ -46,19 +47,21 @@
 		<input type="hidden" name="statusCode" th:value="status.statusCode">
 		<input type="submit" value="編集" class="btn btn-primary">
 	</form>
-	<br>
-	<form th:action="@{/case-remove}" method="post" th:object="${caseDetail}">
+	
+	<form th:action="@{/case-remove}" method="post" th:object="${caseDetail}"
+			class="d-inline ms-5">
 		<input type="hidden" th:field="*{caseId}">
 		<input type="submit" value="削除" class="btn btn-primary">
 	</form>
-	<div th:if="${caseDetail.taskList.size()} != 0" class="mt-1">
-		(タスクは全て削除)
+	<div th:if="${caseDetail.taskList.size()} != 0" class="mt-3">
+		(ケースを削除するとタスクも削除されます)
 	</div>
 	<br><br>
 	
 	<!-- タスク一覧 -->
+	<h3>タスク一覧</h3>
 	<div th:if="${caseDetail.taskList.size() != 0}">
-		<table class="table table-bordered w-75 mx-auto">
+		<table class="table table-bordered w-75 mx-auto mt-3">
 			<tr>
 				<th class="bg-dark-subtle">削除</th>
 				<th class="bg-dark-subtle">タスクID</th>
