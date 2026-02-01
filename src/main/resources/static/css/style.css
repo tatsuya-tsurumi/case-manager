@@ -38,7 +38,9 @@ body {
 }
 
 .content-col {
-  min-width: 56px;
+  min-width: 80px;
   word-break: break-word;
 }
+
+
 
